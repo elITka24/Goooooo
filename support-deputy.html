@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -100,12 +99,6 @@ background:linear-gradient(90deg,transparent,rgba(140,120,255,.5),transparent)
 
 .section h2{margin:0 0 24px;font-size:25px;color:#fff}
 
-.section h3{
-margin:25px 0 12px;
-color:#aeb8d8;
-font-size:17px
-}
-
 .info{
 margin:11px 0;
 padding:16px 18px;
@@ -138,16 +131,6 @@ border:1px solid rgba(130,145,190,.18);
 box-shadow:0 15px 45px rgba(0,0,0,.3)
 }
 
-ul,ol{padding-left:22px;margin-bottom:0}
-
-li{
-margin:11px 0;
-line-height:1.6;
-color:#cbd1e3
-}
-
-li::marker{color:#8d7cff}
-
 footer{
 text-align:center;
 margin-top:40px;
@@ -165,7 +148,6 @@ header{margin-bottom:30px}
 .guide-image{max-width:100%;max-height:500px}
 }
 </style>
-
 </head>
 
 <body>
@@ -186,24 +168,37 @@ header{margin-bottom:30px}
 <section class="section">
 <h2>👤 Назначение сотрудника</h2>
 
-<ol>
-<li>Добавить участника в чат Тех.Поддержки.</li>
-<li>Предоставить все форумы и провести проверку с записью.</li>
-<li>Выдать права или повысить ранг через бота.</li>
-<li>Выдать права группы: «Удаление сообщений» и «Права на войс».</li>
-</ol>
+<div class="info">
+1. Добавить участника в чат Тех.Поддержки.
+</div>
 
-<p>В правах группы установить префикс:</p>
+<div class="info">
+2. Предоставить все форумы и провести проверку с записью.
+</div>
 
-<div class="command">Тех.поддержка</div>
+<div class="info">
+3. Выдать права или повысить ранг через бота.
+</div>
+
+<div class="info">
+4. Выдать права группы:
+<br><br>
+<strong>«Удаление сообщений»</strong><br>
+<strong>«Права на войс»</strong>
+</div>
+
+<div class="command">
+Префикс: Тех.поддержка
+</div>
+
 </section>
 
 <section class="section">
 <h2>⬆️ Повышение</h2>
 
-<p>Для повышения сотрудника используется команда:</p>
-
-<div class="command">Повысить</div>
+<div class="command">
+Повысить
+</div>
 
 <img class="guide-image"
 src="https://i.postimg.cc/D04kyTMf/Snimok-ekrana-2026-05-09-170430.png"
@@ -214,9 +209,9 @@ alt="Повышение сотрудника">
 <section class="section">
 <h2>⬇️ Понижение</h2>
 
-<p>Для понижения сотрудника используется команда:</p>
-
-<div class="command">Понизить</div>
+<div class="command">
+Понизить
+</div>
 
 <img class="guide-image"
 src="https://i.postimg.cc/B6kZCMWX/Snimok-ekrana-2026-05-09-170600.png"
@@ -227,11 +222,13 @@ alt="Понижение сотрудника">
 <section class="section">
 <h2>🚫 Снятие сотрудника</h2>
 
-<p>Для снятия сотрудника используется команда:</p>
+<div class="command">
+Разжаловать
+</div>
 
-<div class="command">Разжаловать</div>
-
-<p>После этого необходимо убрать права группы.</p>
+<div class="info">
+После снятия необходимо убрать права группы.
+</div>
 
 <img class="guide-image"
 src="https://i.postimg.cc/HkdY3rKD/Snimok-ekrana-2026-05-09-170630.png"
@@ -242,16 +239,17 @@ alt="Снятие сотрудника">
 <section class="section">
 <h2>⚙️ Права группы</h2>
 
-<p>Для сотрудников Тех.Поддержки должны быть выданы необходимые права:</p>
+<div class="info">
+<strong>Удаление сообщений</strong>
+</div>
 
-<ul>
-<li>Удаление сообщений</li>
-<li>Права на войс</li>
-</ul>
+<div class="info">
+<strong>Права на войс</strong>
+</div>
 
 <img class="guide-image"
 src="https://i.postimg.cc/0ysQ3WzH/Snimok-ekrana-2026-05-03-210157.png"
-alt="Права администратора">
+alt="Права группы">
 
 </section>
 

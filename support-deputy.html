@@ -2,35 +2,25 @@
 
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ELITKA VII — Саппорт и Тех.Заместитель</title>
 
 <style>
-
-*{
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
 margin:0;
 min-height:100vh;
-
 font-family:Arial,Helvetica,sans-serif;
 color:#f5f7ff;
-
 background:
-radial-gradient(circle at 20% 10%,rgba(100,80,255,.18),transparent 30%),
-radial-gradient(circle at 80% 20%,rgba(0,180,255,.12),transparent 30%),
-radial-gradient(circle at 50% 90%,rgba(120,60,255,.12),transparent 35%),
-linear-gradient(135deg,#070914 0%,#0b1020 45%,#070914 100%);
-
+radial-gradient(circle at 15% 10%,rgba(90,110,255,.22),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(0,180,255,.14),transparent 30%),
+radial-gradient(circle at 50% 90%,rgba(90,60,255,.15),transparent 35%),
+linear-gradient(135deg,#050711 0%,#091020 45%,#050711 100%);
 background-attachment:fixed;
 }
 
@@ -39,88 +29,157 @@ content:"";
 position:fixed;
 inset:0;
 pointer-events:none;
-
 background:
 linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
 linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
-
 background-size:45px 45px;
-
 mask-image:linear-gradient(to bottom,black,transparent);
 }
 
 .container{
-width:min(1050px,92%);
+width:min(1150px,94%);
 margin:auto;
-padding:25px 0 70px;
+padding:20px 0 70px;
 }
 
-/* ===== НАВИГАЦИЯ ===== */
+/* ===== ГЛАВНОЕ МЕНЮ ===== */
 
-.navigation{
+.main-menu{
+position:sticky;
+top:12px;
+z-index:1000;
 display:flex;
-justify-content:center;
-gap:10px;
-
-margin-bottom:40px;
+align-items:center;
+gap:8px;
 padding:10px;
-
-background:rgba(10,14,28,.72);
-
-border:1px solid rgba(130,145,190,.16);
+margin-bottom:35px;
+background:rgba(8,12,27,.82);
+border:1px solid rgba(130,145,190,.18);
 border-radius:18px;
-
-backdrop-filter:blur(14px);
-
-box-shadow:0 15px 40px rgba(0,0,0,.25);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+box-shadow:
+0 15px 45px rgba(0,0,0,.35),
+inset 0 1px rgba(255,255,255,.04);
+overflow-x:auto;
+scrollbar-width:none;
 }
 
-.nav-button{
-display:block;
+.main-menu::-webkit-scrollbar{display:none}
 
-padding:12px 20px;
-
-border-radius:12px;
-
+.logo{
+flex:0 0 auto;
+padding:10px 15px;
+font-size:18px;
+font-weight:900;
+letter-spacing:1px;
 text-decoration:none;
-
-color:#aeb7d0;
-
-background:rgba(255,255,255,.025);
-
-border:1px solid rgba(130,145,190,.12);
-
-font-size:14px;
-font-weight:600;
-
-transition:.2s ease;
-
-text-align:center;
+background:linear-gradient(90deg,#ffffff,#a99cff,#78c8ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.nav-button:hover{
+.menu-button{
+flex:0 0 auto;
+display:block;
+padding:11px 14px;
+border-radius:11px;
+text-decoration:none;
+color:#aeb7d0;
+background:rgba(255,255,255,.025);
+border:1px solid rgba(130,145,190,.10);
+font-size:13px;
+font-weight:600;
+white-space:nowrap;
+transition:.2s ease;
+}
+
+.menu-button:hover{
 color:#fff;
-
-background:rgba(120,100,255,.13);
-
-border-color:rgba(140,120,255,.4);
-
+background:rgba(110,100,255,.14);
+border-color:rgba(145,125,255,.4);
 transform:translateY(-2px);
 }
 
-.nav-button.active{
+.menu-button.active{
 color:#fff;
-
-background:
-linear-gradient(
+background:linear-gradient(
 135deg,
 rgba(120,100,255,.28),
 rgba(70,150,255,.14)
 );
-
 border-color:rgba(145,125,255,.55);
-
 box-shadow:0 0 20px rgba(120,100,255,.12);
+}
+
+/* ===== РАСКЛАДКА ===== */
+
+.page-layout{
+display:grid;
+grid-template-columns:210px minmax(0,1fr);
+gap:28px;
+align-items:start;
+}
+
+/* ===== БОКОВОЕ МЕНЮ ===== */
+
+.side-navigation{
+position:sticky;
+top:95px;
+padding:12px;
+background:rgba(10,14,28,.72);
+border:1px solid rgba(130,145,190,.16);
+border-radius:18px;
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+box-shadow:
+0 15px 40px rgba(0,0,0,.25),
+inset 0 1px rgba(255,255,255,.03);
+}
+
+.side-title{
+padding:8px 10px 12px;
+color:#777f9b;
+font-size:11px;
+font-weight:800;
+letter-spacing:1px;
+text-transform:uppercase;
+}
+
+.side-button{
+display:block;
+padding:12px 11px;
+margin:5px 0;
+border-radius:11px;
+text-decoration:none;
+color:#aeb7d0;
+background:rgba(255,255,255,.025);
+border:1px solid rgba(130,145,190,.08);
+font-size:13px;
+font-weight:600;
+transition:.2s ease;
+}
+
+.side-button:hover{
+color:#fff;
+background:rgba(110,100,255,.14);
+border-color:rgba(145,125,255,.35);
+transform:translateX(3px);
+}
+
+.side-button.active{
+color:#fff;
+background:linear-gradient(
+135deg,
+rgba(120,100,255,.28),
+rgba(70,150,255,.14)
+);
+border-color:rgba(145,125,255,.5);
+box-shadow:0 0 20px rgba(120,100,255,.10);
+}
+
+.content-area{
+min-width:0;
 }
 
 /* ===== HEADER ===== */
@@ -132,85 +191,54 @@ margin-bottom:45px;
 
 .badge{
 display:inline-block;
-
 padding:8px 15px;
-
 border-radius:999px;
-
 background:rgba(130,100,255,.12);
-
 border:1px solid rgba(150,130,255,.3);
-
 color:#bdb4ff;
-
 font-size:13px;
 letter-spacing:1px;
-
 margin-bottom:18px;
 }
 
 header h1{
 margin:0;
-
 font-size:clamp(34px,6vw,58px);
-
 font-weight:800;
-
-background:
-linear-gradient(
-90deg,
-#fff,
-#a99cff,
-#78c8ff
-);
-
+background:linear-gradient(90deg,#fff,#a99cff,#78c8ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 header p{
 margin-top:14px;
-
 color:#8f98b5;
-
 font-size:16px;
 }
 
-/* ===== SECTIONS ===== */
+/* ===== СЕКЦИИ ===== */
 
 .section{
 position:relative;
-
 margin:22px 0;
-
 padding:28px;
-
 background:rgba(15,20,38,.72);
-
 border:1px solid rgba(130,145,190,.16);
-
 border-radius:22px;
-
 box-shadow:
 0 20px 60px rgba(0,0,0,.28),
 inset 0 1px rgba(255,255,255,.03);
-
 backdrop-filter:blur(14px);
 }
 
 .section::before{
 content:"";
-
 position:absolute;
-
 top:0;
 left:25px;
 right:25px;
-
 height:1px;
-
-background:
-linear-gradient(
+background:linear-gradient(
 90deg,
 transparent,
 rgba(140,120,255,.5),
@@ -220,132 +248,129 @@ transparent
 
 .section h2{
 margin:0 0 24px;
-
 font-size:25px;
-
 color:#fff;
 }
 
 .step{
 display:flex;
-
 align-items:flex-start;
-
 gap:15px;
-
 margin:12px 0;
-
 padding:16px 18px;
-
 background:rgba(7,10,22,.75);
-
 border:1px solid rgba(130,145,190,.13);
-
 border-radius:13px;
-
 color:#dce1f0;
-
 line-height:1.6;
 }
 
 .step-number{
 min-width:32px;
 height:32px;
-
 display:flex;
-
 align-items:center;
 justify-content:center;
-
 border-radius:50%;
-
-background:
-linear-gradient(
+background:linear-gradient(
 135deg,
 rgba(120,100,255,.35),
 rgba(70,150,255,.2)
 );
-
 border:1px solid rgba(145,125,255,.45);
-
 color:#fff;
-
 font-weight:700;
 }
 
 .command{
 margin:10px 0;
-
 padding:14px 17px;
-
 background:rgba(5,8,18,.9);
-
 border:1px solid rgba(130,145,190,.18);
-
 border-radius:12px;
-
 font-family:Consolas,monospace;
-
 color:#aebeff;
-
 overflow-x:auto;
 }
 
 .guide-image{
 display:block;
-
 width:auto;
-
 max-width:520px;
-
 max-height:650px;
-
 height:auto;
-
 margin:20px auto;
-
 border-radius:15px;
-
 border:1px solid rgba(130,145,190,.18);
-
 box-shadow:0 15px 45px rgba(0,0,0,.3);
 }
 
 footer{
 text-align:center;
-
 margin-top:40px;
-
 color:#68718d;
-
 font-size:13px;
 }
 
 /* ===== MOBILE ===== */
 
-@media(max-width:650px){
+@media(max-width:750px){
 
 .container{
 width:94%;
-padding-top:15px;
+padding-top:10px;
 }
 
-.navigation{
+.main-menu{
+top:7px;
+margin-bottom:20px;
+border-radius:15px;
+}
+
+.logo{
+font-size:16px;
+padding:9px 11px;
+}
+
+.menu-button{
+padding:10px 12px;
+font-size:12px;
+}
+
+.page-layout{
+grid-template-columns:1fr;
+gap:18px;
+}
+
+.side-navigation{
+position:static;
+display:flex;
+align-items:center;
 gap:6px;
 padding:7px;
+overflow-x:auto;
+scrollbar-width:none;
+border-radius:15px;
 }
 
-.nav-button{
-flex:1;
+.side-navigation::-webkit-scrollbar{
+display:none;
+}
 
-padding:11px 7px;
+.side-title{
+display:none;
+}
 
+.side-button{
+flex:0 0 auto;
+margin:0;
+padding:10px 12px;
 font-size:12px;
+white-space:nowrap;
 }
 
 .section{
 padding:20px 17px;
-
 border-radius:17px;
 }
 
@@ -365,9 +390,28 @@ max-height:500px;
 header{
 margin-bottom:30px;
 }
-
 }
 
+@media(max-width:430px){
+
+.main-menu{
+gap:6px;
+}
+
+.logo{
+padding:9px 10px;
+}
+
+.menu-button{
+padding:9px 10px;
+font-size:11px;
+}
+
+.side-button{
+padding:9px 10px;
+font-size:11px;
+}
+}
 </style>
 
 </head>
@@ -376,21 +420,79 @@ margin-bottom:30px;
 
 <div class="container">
 
-<nav class="navigation">
+<!-- ГЛАВНОЕ МЕНЮ -->
 
-<a class="nav-button" href="support.html">
-📋 Правила поддержки
+<nav class="main-menu">
+
+<a class="logo" href="index.html">ELITKA</a>
+
+<a class="menu-button" href="index.html">
+🏠 Главная
 </a>
 
-<a class="nav-button active" href="support-deputy.html">
-🛠️ Саппорт и Тех.Заместитель
+<a class="menu-button" href="advertising.html">
+Реклама
 </a>
 
-<a class="nav-button" href="support-forbidden.html">
-🚫 Запрещено
+<a class="menu-button" href="index.html#administration">
+Администрация
+</a>
+
+<a class="menu-button active" href="support.html">
+Тех.Поддержка
+</a>
+
+<a class="menu-button" href="deputy-owner.html">
+Зам.Владелец
+</a>
+
+<a class="menu-button" href="owner.html">
+Владелец
+</a>
+
+<a class="menu-button" href="rules.html">
+Правила
+</a>
+
+<a class="menu-button" href="complaints.html">
+⚠️ Жалобы
+</a>
+
+<a class="menu-button" href="about.html">
+О проекте
 </a>
 
 </nav>
+
+<!-- РАСКЛАДКА -->
+
+<div class="page-layout">
+
+<!-- БОКОВОЕ МЕНЮ ПОДДЕРЖКИ -->
+
+<aside class="side-navigation">
+
+<div class="side-title">
+Тех.Поддержка
+</div>
+
+<a class="side-button" href="support.html">
+📋 Правила поддержки
+</a>
+
+<a class="side-button active" href="support-deputy.html">
+🛠️ Саппорт и Тех.Заместитель
+</a>
+
+<a class="side-button" href="support-forbidden.html">
+🚫 Запрещено
+</a>
+
+</aside>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+
+<main class="content-area">
 
 <header>
 
@@ -410,9 +512,7 @@ margin-bottom:30px;
 
 <section class="section">
 
-<h2>
-🛠️ Назначение сотрудника
-</h2>
+<h2>🛠️ Назначение сотрудника</h2>
 
 <p>
 Тех.Заместитель и Саппорт назначают сотрудников поддержки в следующем порядке:
@@ -420,9 +520,7 @@ margin-bottom:30px;
 
 <div class="step">
 
-<div class="step-number">
-1
-</div>
+<div class="step-number">1</div>
 
 <div>
 Назначить сотрудника на должность после успешной проверки его знаний правил и обязанностей.
@@ -432,9 +530,7 @@ margin-bottom:30px;
 
 <div class="step">
 
-<div class="step-number">
-2
-</div>
+<div class="step-number">2</div>
 
 <div>
 Проверить, знает ли сотрудник правила Тех.Поддержки и свои обязанности.
@@ -444,9 +540,7 @@ margin-bottom:30px;
 
 <div class="step">
 
-<div class="step-number">
-3
-</div>
+<div class="step-number">3</div>
 
 <div>
 После проверки добавить сотрудника в соответствующую группу Тех.Поддержки и выдать ему необходимый ранг.
@@ -458,15 +552,11 @@ margin-bottom:30px;
 
 <section class="section">
 
-<h2>
-⬆️ Повышение
-</h2>
+<h2>⬆️ Повышение</h2>
 
 <div class="step">
 
-<div class="step-number">
-1
-</div>
+<div class="step-number">1</div>
 
 <div>
 
@@ -483,10 +573,88 @@ margin-bottom:30px;
 <img
 class="guide-image"
 src="https://i.postimg.cc/D04kyTMf/Snimok-ekrana-2026-05-09-170430.png"
-alt="Повышение сотрудника"
-
->
+alt="Повышение сотрудника">
 
 </section>
 
-<sec
+<section class="section">
+
+<h2>⬇️ Понижение</h2>
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<div>
+
+Для понижения сотрудника используется команда:
+
+<div class="command">
+Понизить
+</div>
+
+</div>
+
+</div>
+
+<img
+class="guide-image"
+src="https://i.postimg.cc/B6kZCMWX/Snimok-ekrana-2026-05-09-170600.png"
+alt="Понижение сотрудника">
+
+</section>
+
+<section class="section">
+
+<h2>🔨 Разжалование</h2>
+
+<div class="step">
+
+<div class="step-number">1</div>
+
+<div>
+
+Для снятия сотрудника используется команда:
+
+<div class="command">
+Разжаловать
+</div>
+
+</div>
+
+</div>
+
+<img
+class="guide-image"
+src="https://i.postimg.cc/HkdY3rKD/Snimok-ekrana-2026-05-09-170630.png"
+alt="Разжалование сотрудника">
+
+</section>
+
+<section class="section">
+
+<h2>🔐 Права группы</h2>
+
+<p>
+После назначения сотруднику необходимо выдать соответствующие права в группе Тех.Поддержки.
+</p>
+
+<img
+class="guide-image"
+src="https://i.postimg.cc/0ysQ3WzH/Snimok-ekrana-2026-05-03-210157.png"
+alt="Права группы">
+
+</section>
+
+<footer>
+© 2026 ELITKA VII • Support
+</footer>
+
+</main>
+
+</div>
+
+</div>
+
+</body>
+</html>

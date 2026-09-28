@@ -46,14 +46,16 @@ background-size:45px 45px;
 mask-image:linear-gradient(to bottom,black,transparent);
 }
 
-/* container */
 .container{
 width:min(1150px,94%);
 margin:auto;
 padding:20px 0 70px;
 }
 
-/* main menu */
+/* =========================
+   ГЛАВНОЕ ВЕРХНЕЕ МЕНЮ
+========================= */
+
 .main-menu{
 position:sticky;
 top:12px;
@@ -86,7 +88,6 @@ scrollbar-width:none;
 display:none;
 }
 
-/* logo */
 .logo{
 flex:0 0 auto;
 
@@ -109,7 +110,6 @@ background:linear-gradient(
 -webkit-text-fill-color:transparent;
 }
 
-/* menu buttons */
 .menu-button{
 flex:0 0 auto;
 
@@ -161,16 +161,32 @@ box-shadow:
 0 0 20px rgba(120,100,255,.12);
 }
 
-/* secondary navigation */
-.navigation{
-display:flex;
-justify-content:center;
-gap:10px;
+/* =========================
+   СЕТКА С БОКОВЫМ МЕНЮ
+========================= */
 
-margin-bottom:40px;
-padding:10px;
+.page-layout{
+display:grid;
+
+grid-template-columns:210px minmax(0,1fr);
+
+gap:28px;
+
+align-items:start;
+}
+
+/* =========================
+   БОКОВОЕ МЕНЮ
+========================= */
+
+.side-navigation{
+position:sticky;
+top:95px;
+
+padding:12px;
 
 background:rgba(10,14,28,.72);
+
 border:1px solid rgba(130,145,190,.16);
 
 border-radius:18px;
@@ -178,15 +194,32 @@ border-radius:18px;
 backdrop-filter:blur(14px);
 -webkit-backdrop-filter:blur(14px);
 
-box-shadow:0 15px 40px rgba(0,0,0,.25);
+box-shadow:
+0 15px 40px rgba(0,0,0,.25),
+inset 0 1px rgba(255,255,255,.03);
 }
 
-.nav-button{
+.side-title{
+padding:8px 10px 12px;
+
+color:#777f9b;
+
+font-size:11px;
+font-weight:800;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+}
+
+.side-button{
 display:block;
 
-padding:12px 20px;
+padding:12px 11px;
 
-border-radius:12px;
+margin:5px 0;
+
+border-radius:11px;
 
 text-decoration:none;
 
@@ -194,27 +227,25 @@ color:#aeb7d0;
 
 background:rgba(255,255,255,.025);
 
-border:1px solid rgba(130,145,190,.12);
+border:1px solid rgba(130,145,190,.08);
 
-font-size:14px;
+font-size:13px;
 font-weight:600;
 
 transition:.2s ease;
-
-text-align:center;
 }
 
-.nav-button:hover{
+.side-button:hover{
 color:#fff;
 
-background:rgba(120,100,255,.13);
+background:rgba(110,100,255,.14);
 
-border-color:rgba(140,120,255,.4);
+border-color:rgba(145,125,255,.35);
 
-transform:translateY(-2px);
+transform:translateX(3px);
 }
 
-.nav-button.active{
+.side-button.active{
 color:#fff;
 
 background:
@@ -224,10 +255,18 @@ rgba(120,100,255,.28),
 rgba(70,150,255,.14)
 );
 
-border-color:rgba(145,125,255,.55);
+border-color:rgba(145,125,255,.5);
 
 box-shadow:
-0 0 20px rgba(120,100,255,.12);
+0 0 20px rgba(120,100,255,.10);
+}
+
+/* =========================
+   КОНТЕНТ
+========================= */
+
+.content-area{
+min-width:0;
 }
 
 header{
@@ -476,7 +515,10 @@ color:#68718d;
 font-size:13px;
 }
 
-/* mobile */
+/* =========================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================= */
+
 @media(max-width:750px){
 
 .container{
@@ -505,18 +547,48 @@ padding:10px 12px;
 font-size:12px;
 }
 
-.navigation{
+.page-layout{
+grid-template-columns:1fr;
+
+gap:18px;
+}
+
+.side-navigation{
+position:static;
+
+display:flex;
+
+align-items:center;
+
 gap:6px;
 
 padding:7px;
+
+overflow-x:auto;
+
+scrollbar-width:none;
+
+border-radius:15px;
 }
 
-.nav-button{
-flex:1;
+.side-navigation::-webkit-scrollbar{
+display:none;
+}
 
-padding:11px 7px;
+.side-title{
+display:none;
+}
+
+.side-button{
+flex:0 0 auto;
+
+margin:0;
+
+padding:10px 12px;
 
 font-size:12px;
+
+white-space:nowrap;
 }
 
 .section{
@@ -558,15 +630,14 @@ padding:9px 10px;
 
 .menu-button{
 padding:9px 10px;
+
 font-size:11px;
 }
 
-.navigation{
-flex-direction:column;
-}
+.side-button{
+padding:9px 10px;
 
-.nav-button{
-width:100%;
+font-size:11px;
 }
 }
 </style>
@@ -577,7 +648,7 @@ width:100%;
 
 <div class="container">
 
-<!-- MAIN MENU -->
+<!-- ГЛАВНОЕ ВЕРХНЕЕ МЕНЮ -->
 
 <nav class="main-menu">
 
@@ -631,23 +702,33 @@ ELITKA
 
 </nav>
 
-<!-- ADMINISTRATION SUBMENU -->
+<div class="page-layout">
 
-<nav class="navigation">
+<!-- БОКОВОЕ МЕНЮ АДМИНИСТРАЦИИ -->
 
-<a class="nav-button active" href="index.html">
+<aside class="side-navigation">
+
+<div class="side-title">
+Администрация
+</div>
+
+<a class="side-button active" href="index.html">
 📋 Правила администрации
 </a>
 
-<a class="nav-button" href="leader.html">
+<a class="side-button" href="leader.html">
 👑 Лидер и Заместитель
 </a>
 
-<a class="nav-button" href="forbidden.html">
+<a class="side-button" href="forbidden.html">
 🚫 Запрещено
 </a>
 
-</nav>
+</aside>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+
+<main class="content-area">
 
 <header>
 
@@ -809,6 +890,16 @@ ELITKA
 <footer>
 © 2026 ELITKA VII • Administration
 </footer>
+
+</main>
+
+</div>
+
+</div>
+
+</body>
+</html>
+
 
 </div>
 

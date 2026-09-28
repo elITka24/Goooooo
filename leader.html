@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -8,183 +8,413 @@
 <title>ELITKA VII — Лидер и Заместитель</title>
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#f5f7ff;
-background:
-radial-gradient(circle at 20% 10%,rgba(100,80,255,.18),transparent 30%),
-radial-gradient(circle at 80% 20%,rgba(0,180,255,.12),transparent 30%),
-radial-gradient(circle at 50% 90%,rgba(120,60,255,.12),transparent 35%),
-linear-gradient(135deg,#070914 0%,#0b1020 45%,#070914 100%);
-background-attachment:fixed
-}
-body::before{
-content:"";position:fixed;inset:0;pointer-events:none;
-background:
-linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
-background-size:45px 45px;mask-image:linear-gradient(to bottom,black,transparent)
-}
-.container{width:min(1050px,92%);margin:auto;padding:25px 0 70px}
-
-.navigation{
-display:flex;justify-content:center;gap:10px;margin-bottom:40px;padding:10px;
-background:rgba(10,14,28,.72);border:1px solid rgba(130,145,190,.16);
-border-radius:18px;backdrop-filter:blur(14px);box-shadow:0 15px 40px rgba(0,0,0,.25)
-}
-.nav-button{
-display:block;padding:12px 20px;border-radius:12px;text-decoration:none;
-color:#aeb7d0;background:rgba(255,255,255,.025);
-border:1px solid rgba(130,145,190,.12);font-size:14px;font-weight:600;
-transition:.2s ease;text-align:center
-}
-.nav-button:hover{
-color:#fff;background:rgba(120,100,255,.13);
-border-color:rgba(140,120,255,.4);transform:translateY(-2px)
-}
-.nav-button.active{
-color:#fff;background:linear-gradient(135deg,rgba(120,100,255,.28),rgba(70,150,255,.14));
-border-color:rgba(145,125,255,.55);box-shadow:0 0 20px rgba(120,100,255,.12)
+* {
+    box-sizing: border-box;
 }
 
-header{text-align:center;margin-bottom:45px}
-.badge{
-display:inline-block;padding:8px 15px;border-radius:999px;
-background:rgba(130,100,255,.12);border:1px solid rgba(150,130,255,.3);
-color:#bdb4ff;font-size:13px;letter-spacing:1px;margin-bottom:18px;
-text-decoration:none;transition:.2s ease
-}
-.badge:hover{
-color:#fff;
-background:rgba(130,100,255,.2);
-border-color:rgba(160,140,255,.6);
-transform:translateY(-2px);
-box-shadow:0 0 20px rgba(120,100,255,.15)
-}
-header h1{
-margin:0;font-size:clamp(34px,6vw,58px);font-weight:800;
-background:linear-gradient(90deg,#fff,#a99cff,#78c8ff);
--webkit-background-clip:text;-webkit-text-fill-color:transparent
-}
-header p{margin-top:14px;color:#8f98b5;font-size:16px}
-
-.section{
-position:relative;margin:22px 0;padding:28px;background:rgba(15,20,38,.72);
-border:1px solid rgba(130,145,190,.16);border-radius:22px;
-box-shadow:0 20px 60px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.03);
-backdrop-filter:blur(14px)
-}
-.section::before{
-content:"";position:absolute;top:0;left:25px;right:25px;height:1px;
-background:linear-gradient(90deg,transparent,rgba(140,120,255,.5),transparent)
-}
-.section h2{margin:0 0 24px;font-size:25px;color:#fff}
-
-.step{
-display:flex;align-items:flex-start;gap:15px;margin:12px 0;padding:16px 18px;
-background:rgba(7,10,22,.75);border:1px solid rgba(130,145,190,.13);
-border-radius:13px;color:#dce1f0;line-height:1.6
-}
-.step-number{
-min-width:32px;height:32px;display:flex;align-items:center;justify-content:center;
-border-radius:50%;background:linear-gradient(135deg,rgba(120,100,255,.35),rgba(70,150,255,.2));
-border:1px solid rgba(145,125,255,.45);color:#fff;font-weight:700
-}
-.command{
-margin:10px 0;padding:14px 17px;background:rgba(5,8,18,.9);
-border:1px solid rgba(130,145,190,.18);border-radius:12px;
-font-family:Consolas,monospace;color:#aebeff;overflow-x:auto
-}
-.command strong{color:#fff}
-
-.guide-image{
-display:block;width:auto;max-width:520px;max-height:650px;height:auto;
-margin:20px auto;border-radius:15px;border:1px solid rgba(130,145,190,.18);
-box-shadow:0 15px 45px rgba(0,0,0,.3)
+html {
+    scroll-behavior: smooth;
 }
 
-footer{text-align:center;margin-top:40px;color:#68718d;font-size:13px}
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f5f7ff;
 
-@media(max-width:650px){
-.container{width:94%;padding-top:15px}
-.navigation{gap:6px;padding:7px}
-.nav-button{flex:1;padding:11px 7px;font-size:12px}
-.section{padding:20px 17px;border-radius:17px}
-.section h2{font-size:22px}
-.step{padding:14px}
-.guide-image{max-width:100%;max-height:500px}
-header{margin-bottom:30px}
+    background:
+        radial-gradient(circle at 20% 10%, rgba(100, 80, 255, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(0, 180, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(120, 60, 255, 0.12), transparent 35%),
+        linear-gradient(135deg, #070914 0%, #0b1020 45%, #070914 100%);
+
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.container {
+    width: min(1050px, 92%);
+    margin: auto;
+    padding: 25px 0 70px;
+}
+
+/* NAVIGATION */
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    padding: 10px;
+    background: rgba(10, 14, 28, 0.72);
+    border: 1px solid rgba(130, 145, 190, 0.16);
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.nav-button {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #aeb7d0;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(130,145,190,0.12);
+    font-size: 14px;
+    font-weight: 600;
+    transition: .2s ease;
+    text-align: center;
+}
+
+.nav-button:hover {
+    color: #ffffff;
+    background: rgba(120,100,255,0.13);
+    border-color: rgba(140,120,255,0.4);
+    transform: translateY(-2px);
+}
+
+.nav-button.active {
+    color: #ffffff;
+    background: linear-gradient(
+        135deg,
+        rgba(120,100,255,0.28),
+        rgba(70,150,255,0.14)
+    );
+    border-color: rgba(145,125,255,0.55);
+    box-shadow: 0 0 20px rgba(120,100,255,0.12);
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 999px;
+    background: rgba(130, 100, 255, 0.12);
+    border: 1px solid rgba(150, 130, 255, 0.3);
+    color: #bdb4ff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(34px, 6vw, 58px);
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffffff, #a99cff, #78c8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    margin-top: 14px;
+    color: #8f98b5;
+    font-size: 16px;
+}
+
+/* SECTIONS */
+.section {
+    position: relative;
+    margin: 22px 0;
+    padding: 28px;
+    background: rgba(15, 20, 38, 0.72);
+    border: 1px solid rgba(130, 145, 190, 0.16);
+    border-radius: 22px;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.28),
+        inset 0 1px rgba(255,255,255,0.03);
+    backdrop-filter: blur(14px);
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 25px;
+    right: 25px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(140,120,255,0.5),
+        transparent
+    );
+}
+
+.section h2 {
+    margin: 0 0 24px;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.section h3 {
+    margin: 25px 0 12px;
+    color: #aeb8d8;
+    font-size: 17px;
+}
+
+/* STEPS */
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 12px 0;
+    padding: 16px 18px;
+    background: rgba(7, 10, 22, 0.75);
+    border: 1px solid rgba(130,145,190,0.13);
+    border-radius: 13px;
+    color: #dce1f0;
+    line-height: 1.6;
+}
+
+.step-number {
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(120,100,255,0.35),
+        rgba(70,150,255,0.2)
+    );
+    border: 1px solid rgba(145,125,255,0.45);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* COMMAND */
+.command {
+    margin: 10px 0;
+    padding: 14px 17px;
+    background: rgba(5, 8, 18, 0.9);
+    border: 1px solid rgba(130,145,190,0.18);
+    border-radius: 12px;
+    font-family: Consolas, monospace;
+    color: #aebeff;
+    overflow-x: auto;
+}
+
+.command strong {
+    color: #ffffff;
+}
+
+/* INFO */
+.info {
+    margin: 12px 0;
+    padding: 16px 18px;
+    background: rgba(50, 48, 90, 0.32);
+    border: 1px solid rgba(130,120,255,0.22);
+    border-radius: 13px;
+    color: #d9dcf0;
+    line-height: 1.6;
+}
+
+/* IMAGES */
+.guide-image {
+    display: block;
+    width: auto;
+    max-width: 520px;
+    max-height: 650px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 15px;
+    border: 1px solid rgba(130,145,190,0.18);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #68718d;
+    font-size: 13px;
+}
+
+/* MOBILE */
+@media (max-width: 650px) {
+
+    .container {
+        width: 94%;
+        padding-top: 15px;
+    }
+
+    .navigation {
+        gap: 6px;
+        padding: 7px;
+    }
+
+    .nav-button {
+        flex: 1;
+        padding: 11px 7px;
+        font-size: 12px;
+    }
+
+    .section {
+        padding: 20px 17px;
+        border-radius: 17px;
+    }
+
+    .section h2 {
+        font-size: 22px;
+    }
+
+    .step {
+        padding: 14px;
+    }
+
+    .guide-image {
+        max-width: 100%;
+        max-height: 500px;
+    }
+
+    header {
+        margin-bottom: 30px;
+    }
 }
 </style>
-
 </head>
 
 <body>
+
 <div class="container">
 
 <nav class="navigation">
-<a class="nav-button" href="index.html">📋 Правила администрации</a>
-<a class="nav-button active" href="leader.html">👑 Лидер и Заместитель</a>
-<a class="nav-button" href="forbidden.html">🚫 Запрещено</a>
+
+    <a class="nav-button" href="index.html">
+        📋 Правила администрации
+    </a>
+
+    <a class="nav-button active" href="leader.html">
+        👑 Лидер и Заместитель
+    </a>
+
+    <a class="nav-button" href="forbidden.html">
+        🚫 Запрещено
+    </a>
+
 </nav>
 
 <header>
-<a class="badge" href="https://t.me/+XWuxHs902-I2ZjNi" target="_blank">📝 Подать заявку</a>
-<h1>Лидер и Заместитель</h1>
-<p>Назначение, снятие и управление администраторами</p>
+
+    <div class="badge">
+        👑 ELITKA VII • LEADER
+    </div>
+
+    <h1>Лидер и Заместитель</h1>
+
+    <p>
+        Назначение, снятие и управление администраторами
+    </p>
+
 </header>
 
+
 <section class="section">
+
 <h2>👑 Назначение администратора</h2>
 
-<p>Лидер и Заместитель ставят администратора в следующем алгоритме:</p>
+<p>
+Лидер и Заместитель ставят администратора в следующем алгоритме:
+</p>
 
 <div class="step">
-<div class="step-number">1</div>
-<div>Добавить участника в чат админов.</div>
+    <div class="step-number">1</div>
+    <div>
+        Добавить участника в чат админов.
+    </div>
 </div>
 
 <div class="step">
-<div class="step-number">2</div>
-<div>Предоставить форум админов и провести проверку <strong>с записью</strong>.</div>
+    <div class="step-number">2</div>
+    <div>
+        Предоставить форум админов и провести проверку
+        <strong>с записью</strong>.
+    </div>
 </div>
 
 <div class="step">
-<div class="step-number">3</div>
-<div>
-Выдать права в боте:
-<div class="command">!админ 1</div>
-и разрешения группы <strong>«Удаление сообщений»</strong>.
+    <div class="step-number">3</div>
+    <div>
+        Выдать права в боте
+
+        <div class="command">
+            !админ 1
+        </div>
+
+        и разрешения группы
+        <strong>«Удаление сообщений»</strong>.
+    </div>
 </div>
-</div>
+
 </section>
 
+
 <section class="section">
+
 <h2>🔨 Снятие администратора</h2>
 
-<p>Лидер и Заместитель снимают администратора в следующем алгоритме:</p>
+<p>
+Лидер и Заместитель снимают администратора в следующем алгоритме:
+</p>
 
 <div class="step">
-<div class="step-number">1</div>
-<div>
-Снять администратора в боте:
-<div class="command">!админ 0</div>
-и убрать с прав группы <strong>«Разжаловать»</strong>.
-</div>
+    <div class="step-number">1</div>
+    <div>
+        Снять администратора в боте:
+
+        <div class="command">
+            !админ 0
+        </div>
+
+        и убрать с прав группы
+        <strong>«Разжаловать»</strong>.
+    </div>
 </div>
 
-<img class="guide-image"
-src="https://i.postimg.cc/GprPhmVS/image.png"
-alt="Снятие администратора">
+<img
+    class="guide-image"
+    src="https://i.postimg.cc/GprPhmVS/image.png"
+    alt="Снятие администратора"
+>
 
-<img class="guide-image"
-src="https://i.postimg.cc/Jh1JCdHS/Snimok-ekrana-2026-05-03-182506.png"
-alt="Разжаловать администратора">
+<img
+    class="guide-image"
+    src="https://i.postimg.cc/Jh1JCdHS/Snimok-ekrana-2026-05-03-182506.png"
+    alt="Разжаловать администратора"
+>
 
 </section>
 
+
 <section class="section">
+
 <h2>⚠️ Если появляется «Пользователь не найден»</h2>
 
 <p>
@@ -193,66 +423,100 @@ alt="Разжаловать администратора">
 </p>
 
 <div class="step">
-<div class="step-number">1</div>
-<div>Введите команду <strong>«Кто админ»</strong>. Бот отобразит список админов, и вы сможете выбрать нужного.</div>
+    <div class="step-number">1</div>
+    <div>
+        Введите команду <strong>«Кто админ»</strong>.
+        Бот отобразит список админов, и вы сможете выбрать нужного.
+    </div>
 </div>
 
 <div class="step">
-<div class="step-number">2</div>
-<div>Найдите имя пользователя или ID нужного администратора.</div>
+    <div class="step-number">2</div>
+    <div>
+        Найдите имя пользователя или ID нужного администратора.
+    </div>
 </div>
 
 <div class="step">
-<div class="step-number">3</div>
-<div>Нажмите на него, чтобы скопировать ссылку на его профиль.</div>
+    <div class="step-number">3</div>
+    <div>
+        Нажмите на него, чтобы скопировать ссылку на его профиль.
+    </div>
 </div>
 
-<img class="guide-image"
-src="https://i.postimg.cc/L5fB8g93/image.png"
-alt="Копирование ссылки на профиль">
-
-<div class="step">
-<div class="step-number">4</div>
-<div>Вставьте скопированную ссылку в чат.</div>
-</div>
-
-<img class="guide-image"
-src="https://i.postimg.cc/8chMS843/image.png"
-alt="Ссылка на профиль пользователя">
+<img
+    class="guide-image"
+    src="https://i.postimg.cc/L5fB8g93/image.png"
+    alt="Копирование ссылки на профиль"
+>
 
 <div class="step">
-<div class="step-number">5</div>
-<div>
-Удалите из ссылки текст
-<strong>tg://openmessage?user_id=</strong>,
-оставив только цифры ID.
+    <div class="step-number">4</div>
+    <div>
+        Вставьте скопированную ссылку в чат.
+    </div>
 </div>
+
+<img
+    class="guide-image"
+    src="https://i.postimg.cc/8chMS843/image.png"
+    alt="Ссылка на профиль пользователя"
+>
+
+<div class="step">
+    <div class="step-number">5</div>
+    <div>
+        Удалите из ссылки текст
+        <strong>tg://openmessage?user_id=</strong>,
+        оставив только цифры ID.
+    </div>
 </div>
 
 <div class="step">
-<div class="step-number">6</div>
-<div>
-Перед ID поставьте знак <strong>@</strong>.
-<div class="command">@123456789</div>
-</div>
+    <div class="step-number">6</div>
+    <div>
+        Перед ID поставьте знак <strong>@</strong>.
+
+        <div class="command">
+            @123456789
+        </div>
+    </div>
 </div>
 
-<img class="guide-image"
-src="https://i.postimg.cc/gjqX7Vkp/image.png"
-alt="Команда снятия администратора по ID">
+<img
+    class="guide-image"
+    src="https://i.postimg.cc/gjqX7Vkp/image.png"
+    alt="Команда снятия администратора по ID"
+>
 
 <div class="step">
-<div class="step-number">7</div>
-<div>
-Напишите команду:
-<div class="command">!админ 0 @ID</div>
-где вместо <strong>@ID</strong> необходимо вставить ID нужного администратора.
+    <div class="step-number">7</div>
+    <div>
+        Напишите команду:
+
+        <div class="command">
+            !админ 0 @ID
+        </div>
+
+        где вместо <strong>@ID</strong> необходимо вставить
+        ID нужного администратора.
+    </div>
 </div>
-</div>
+
 </section>
 
-<footer>© 2026 ELITKA VII • Administration</footer>
+
+<footer>
+    © 2026 ELITKA VII • Administration
+</footer>
 
 </div>
+
 </body>
 </html>
+```
+
+Теперь в первой секции **вообще нет фотографий**, а оставшиеся изображения ограничены примерно **520px по ширине** и не растягиваются на всю страницу.
+
+И блок **«❗ Важно»** полностью удалён.
+

@@ -1,1 +1,1008 @@
+<!DOCTYPE html>
 
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ELITKA VII — World of Tanks Blitz</title>
+
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,Helvetica,sans-serif;
+color:#f5f7ff;
+
+background:
+radial-gradient(circle at 15% 10%,rgba(100,80,255,.20),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(0,180,255,.12),transparent 30%),
+radial-gradient(circle at 50% 90%,rgba(90,60,255,.12),transparent 35%),
+linear-gradient(135deg,#050711 0%,#091020 45%,#050711 100%);
+
+background-attachment:fixed;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+
+background:
+linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+
+background-size:45px 45px;
+mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.container{
+width:min(1150px,94%);
+margin:auto;
+padding:20px 0 70px;
+}
+
+/* ГЛАВНОЕ МЕНЮ */
+
+.main-menu{
+position:sticky;
+top:12px;
+z-index:1000;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:10px;
+margin-bottom:30px;
+
+background:rgba(8,12,27,.82);
+border:1px solid rgba(130,145,190,.18);
+border-radius:18px;
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+box-shadow:
+0 15px 45px rgba(0,0,0,.35),
+inset 0 1px rgba(255,255,255,.04);
+
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.main-menu::-webkit-scrollbar{
+display:none;
+}
+
+.logo{
+flex:0 0 auto;
+
+padding:10px 15px;
+
+font-size:18px;
+font-weight:900;
+letter-spacing:1px;
+
+text-decoration:none;
+
+background:linear-gradient(90deg,#ffffff,#a99cff,#78c8ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.menu-button{
+flex:0 0 auto;
+
+display:block;
+
+padding:11px 14px;
+
+border-radius:11px;
+
+text-decoration:none;
+
+color:#aeb7d0;
+background:rgba(255,255,255,.025);
+border:1px solid rgba(130,145,190,.10);
+
+font-size:13px;
+font-weight:600;
+
+white-space:nowrap;
+
+transition:.2s ease;
+}
+
+.menu-button:hover{
+color:#fff;
+background:rgba(110,100,255,.14);
+border-color:rgba(145,125,255,.4);
+transform:translateY(-2px);
+}
+
+.menu-button.active{
+color:#fff;
+
+background:
+linear-gradient(
+135deg,
+rgba(120,100,255,.28),
+rgba(70,150,255,.14)
+);
+
+border-color:rgba(145,125,255,.55);
+
+box-shadow:0 0 20px rgba(120,100,255,.12);
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+overflow:hidden;
+
+padding:45px 35px;
+margin-bottom:20px;
+
+border-radius:24px;
+
+background:
+linear-gradient(
+135deg,
+rgba(35,30,70,.82),
+rgba(10,20,30,.86)
+);
+
+border:1px solid rgba(145,125,255,.25);
+
+box-shadow:
+0 25px 70px rgba(0,0,0,.35);
+}
+
+.hero::after{
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+120deg,
+transparent 20%,
+rgba(145,125,255,.08),
+transparent 70%
+);
+
+pointer-events:none;
+}
+
+.badge{
+display:inline-block;
+
+padding:8px 14px;
+
+border-radius:999px;
+
+background:rgba(145,125,255,.10);
+border:1px solid rgba(145,125,255,.25);
+
+color:#bdb4ff;
+
+font-size:13px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.hero h1{
+margin:18px 0 10px;
+
+font-size:clamp(36px,6vw,60px);
+line-height:1;
+
+color:#fff;
+}
+
+.hero p{
+max-width:750px;
+
+margin:0;
+
+color:#b7bfd0;
+
+font-size:16px;
+line-height:1.7;
+}
+
+/* ФОТО */
+
+.gallery{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:12px;
+
+margin-bottom:20px;
+}
+
+.gallery-main{
+width:100%;
+height:100%;
+min-height:330px;
+
+object-fit:cover;
+
+border-radius:19px;
+
+border:1px solid rgba(145,125,255,.18);
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.3);
+
+transition:.25s ease;
+}
+
+.gallery-side{
+display:grid;
+grid-template-rows:1fr 1fr;
+gap:12px;
+}
+
+.gallery-side img{
+width:100%;
+height:100%;
+min-height:155px;
+
+object-fit:cover;
+
+border-radius:19px;
+
+border:1px solid rgba(145,125,255,.16);
+
+transition:.25s ease;
+}
+
+.gallery img:hover{
+transform:scale(1.015);
+
+border-color:rgba(145,125,255,.45);
+}
+
+/* КАРТОЧКИ */
+
+.section{
+margin:18px 0;
+padding:26px;
+
+background:rgba(15,20,38,.76);
+
+border:1px solid rgba(130,145,190,.16);
+border-radius:21px;
+
+box-shadow:
+0 20px 55px rgba(0,0,0,.25),
+inset 0 1px rgba(255,255,255,.03);
+
+backdrop-filter:blur(14px);
+}
+
+.section h2{
+margin:0 0 18px;
+
+font-size:24px;
+color:#fff;
+}
+
+.section p{
+color:#c4ccdc;
+line-height:1.7;
+}
+
+/* КЛАН */
+
+.clan-card{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.clan-info{
+padding:22px;
+
+border-radius:16px;
+
+background:
+linear-gradient(
+135deg,
+rgba(80,65,140,.22),
+rgba(7,10,22,.72)
+);
+
+border:1px solid rgba(145,125,255,.16);
+}
+
+.clan-info h3{
+margin:0 0 18px;
+
+color:#fff;
+font-size:19px;
+}
+
+.clan-label{
+display:block;
+
+margin-bottom:6px;
+
+color:#77819b;
+
+font-size:11px;
+font-weight:800;
+letter-spacing:.7px;
+
+text-transform:uppercase;
+}
+
+.clan-value{
+display:block;
+
+padding:12px 13px;
+
+border-radius:10px;
+
+background:rgba(0,0,0,.28);
+
+color:#e9edf8;
+
+font-family:monospace;
+font-size:15px;
+
+word-break:break-word;
+}
+
+.clan-description{
+padding:22px;
+
+border-radius:16px;
+
+background:rgba(7,10,22,.72);
+
+border:1px solid rgba(130,145,190,.12);
+
+color:#cbd1e3;
+
+line-height:1.7;
+}
+
+/* ВАЖНО */
+
+.notice{
+margin:11px 0;
+padding:16px 18px;
+
+background:rgba(80,70,140,.16);
+
+border:1px solid rgba(140,120,255,.20);
+
+border-radius:13px;
+
+color:#dce0ef;
+
+line-height:1.6;
+}
+
+.notice strong{
+color:#fff;
+}
+
+/* КОМАНДА */
+
+.team{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.team-card{
+padding:20px;
+
+background:rgba(7,10,22,.72);
+
+border:1px solid rgba(130,145,190,.13);
+border-radius:15px;
+}
+
+.team-icon{
+display:flex;
+align-items:center;
+justify-content:center;
+
+width:42px;
+height:42px;
+
+margin-bottom:12px;
+
+border-radius:11px;
+
+background:rgba(145,125,255,.12);
+
+font-size:20px;
+}
+
+.team-card h3{
+margin:0 0 8px;
+
+font-size:16px;
+color:#fff;
+}
+
+.team-card p{
+margin:0;
+
+color:#9fa8bd;
+
+font-size:13px;
+line-height:1.6;
+}
+
+/* БЫСТРЫЙ СТАРТ */
+
+.steps{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.step{
+padding:20px;
+
+background:rgba(7,10,22,.72);
+
+border:1px solid rgba(130,145,190,.13);
+border-radius:15px;
+}
+
+.step-number{
+display:flex;
+align-items:center;
+justify-content:center;
+
+width:35px;
+height:35px;
+
+margin-bottom:12px;
+
+border-radius:10px;
+
+background:rgba(145,125,255,.12);
+
+color:#bdb4ff;
+
+font-weight:800;
+}
+
+.step h3{
+margin:0 0 8px;
+
+font-size:16px;
+color:#fff;
+}
+
+.step p{
+margin:0;
+
+color:#9fa8bd;
+
+font-size:13px;
+line-height:1.6;
+}
+
+/* ФИНАЛ */
+
+.final{
+text-align:center;
+
+margin-top:20px;
+padding:30px;
+
+background:
+linear-gradient(
+135deg,
+rgba(70,55,120,.30),
+rgba(15,20,38,.76)
+);
+
+border:1px solid rgba(145,125,255,.20);
+border-radius:21px;
+}
+
+.final h2{
+margin:0 0 10px;
+
+color:#fff;
+}
+
+.final p{
+margin:0;
+
+color:#aeb8c8;
+line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+
+margin-top:35px;
+
+color:#68718d;
+font-size:13px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media(max-width:850px){
+
+.steps{
+grid-template-columns:1fr 1fr;
+}
+
+.team{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:700px){
+
+.container{
+width:94%;
+padding-top:10px;
+}
+
+.main-menu{
+top:7px;
+margin-bottom:20px;
+border-radius:15px;
+}
+
+.logo{
+font-size:16px;
+padding:9px 11px;
+}
+
+.menu-button{
+padding:10px 12px;
+font-size:12px;
+}
+
+.hero{
+padding:30px 22px;
+border-radius:18px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery-main{
+min-height:230px;
+}
+
+.gallery-side{
+grid-template-columns:1fr 1fr;
+grid-template-rows:none;
+}
+
+.clan-card,
+.steps,
+.team{
+grid-template-columns:1fr;
+}
+
+.section{
+padding:20px 17px;
+border-radius:17px;
+}
+
+}
+
+@media(max-width:430px){
+
+.gallery-side{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.main-menu{
+gap:6px;
+}
+
+.logo{
+padding:9px 10px;
+}
+
+.menu-button{
+padding:9px 10px;
+font-size:11px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ГЛАВНОЕ МЕНЮ -->
+
+<nav class="main-menu">
+
+<a class="logo" href="index.html">
+ELITKA
+</a>
+
+<a class="menu-button" href="index.html">
+🏠 Главная
+</a>
+
+<a class="menu-button" href="advertising.html">
+Реклама
+</a>
+
+<a class="menu-button" href="administration.html">
+Администрация
+</a>
+
+<a class="menu-button" href="support.html">
+Тех.Поддержка
+</a>
+
+<a class="menu-button" href="deputy-owner.html">
+Зам.Владелец
+</a>
+
+<a class="menu-button" href="owner.html">
+Владелец
+</a>
+
+<a class="menu-button" href="rules.html">
+Правила
+</a>
+
+<a class="menu-button" href="complaints.html">
+⚠️ Жалобы
+</a>
+
+<a class="menu-button" href="about.html">
+О проекте
+</a>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="badge">
+🎮 ELITKA VII • WORLD OF TANKS BLITZ
+</div>
+
+<h1>
+World of Tanks Blitz
+</h1>
+
+<p>
+Присоединяйся к нам в Tanks Blitz,
+играй вместе с участниками ELITKA VII,
+общайся, проводи время вместе и развивай
+командный дух нашего сообщества.
+</p>
+
+</section>
+
+<!-- ФОТО -->
+
+<section class="gallery">
+
+<img
+class="gallery-main"
+src="https://i.postimg.cc/Dz4by5yT/IMG-1900.jpg"
+alt="World of Tanks Blitz"
+
+>
+
+<div class="gallery-side">
+
+<img
+src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/444200/83f0f9ced716af701271b8d6c6817215054a1041/ss_83f0f9ced716af701271b8d6c6817215054a1041.1920x1080.jpg"
+alt="World of Tanks Blitz — бой"
+
+>
+
+<img
+src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/444200/d1b6f19cac3d7b62390fe12529a8b0f8d874ce9f/ss_d1b6f19cac3d7b62390fe12529a8b0f8d874ce9f.1920x1080.jpg"
+alt="World of Tanks Blitz — игра"
+
+>
+
+</div>
+
+</section>
+
+<!-- О ИГРЕ -->
+
+<section class="section">
+
+<h2>
+🎮 World of Tanks Blitz
+</h2>
+
+<p>
+World of Tanks Blitz — это игра, в которой можно
+сражаться на танках и играть вместе с другими
+участниками.
+</p>
+
+<p>
+Мы предлагаем участникам ELITKA VII
+присоединиться к игре, чтобы вместе проводить
+время, играть командами и развивать командный дух.
+</p>
+
+</section>
+
+<!-- КЛАН -->
+
+<section class="section">
+
+<h2>
+🛡️ Наш клан
+</h2>
+
+<div class="clan-card">
+
+<div class="clan-info">
+
+<h3>
+🏆 Клан ELITKA
+</h3>
+
+<span class="clan-label">
+Название клана
+</span>
+
+<span class="clan-value">
+[El19A]ELITKA
+</span>
+
+</div>
+
+<div class="clan-description">
+
+Мы приглашаем участников ELITKA VII
+присоединиться к нам в Tanks Blitz.
+
+Это отличная возможность весело провести время,
+поиграть вместе и создать настоящий командный дух
+внутри нашего сообщества.
+
+</div>
+
+</div>
+
+</section>
+
+<!-- КОМАНДА -->
+
+<section class="section">
+
+<h2>
+🤝 Вместе в команде
+</h2>
+
+<div class="team">
+
+<div class="team-card">
+
+<div class="team-icon">
+🎯
+</div>
+
+<h3>
+Играем вместе
+</h3>
+
+<p>
+Собирайтесь с участниками ELITKA VII
+и проводите время за совместными боями.
+</p>
+
+</div>
+
+<div class="team-card">
+
+<div class="team-icon">
+🔥
+</div>
+
+<h3>
+Общаемся
+</h3>
+
+<p>
+Игра помогает участникам общаться
+и проводить время вместе.
+</p>
+
+</div>
+
+<div class="team-card">
+
+<div class="team-icon">
+🏆
+</div>
+
+<h3>
+Создаём команду
+</h3>
+
+<p>
+Объединяем участников и развиваем
+командный дух нашего сообщества.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- КАК ПРИСОЕДИНИТЬСЯ -->
+
+<section class="section">
+
+<h2>
+🚀 Как присоединиться?
+</h2>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-number">
+1
+</div>
+
+<h3>
+Запусти игру
+</h3>
+
+<p>
+Открой World of Tanks Blitz.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+2
+</div>
+
+<h3>
+Найди клан
+</h3>
+
+<p>
+Найди клан [El19A]ELITKA.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+3
+</div>
+
+<h3>
+Присоединяйся
+</h3>
+
+<p>
+Вступай к участникам ELITKA VII
+и играй вместе с нами.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+4
+</div>
+
+<h3>
+Играй вместе</h3>
+
+<p>
+Проводите время вместе,
+играйте и развивайте командный дух.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ВАЖНО -->
+
+<section class="section">
+
+<h2>
+⚠️ Важно
+</h2>
+
+<div class="notice">
+
+🎮 <strong>Игра:</strong>
+World of Tanks Blitz.
+
+</div>
+
+<div class="notice">
+
+🛡️ <strong>Клан:</strong>
+[El19A]ELITKA.
+
+</div>
+
+<div class="notice">
+
+🤝 <strong>Цель:</strong>
+играть вместе с участниками ELITKA VII,
+весело проводить время и создавать командный дух.
+
+</div>
+
+</section>
+
+<!-- ФИНАЛ -->
+
+<section class="final">
+
+<h2>
+🎉 Добро пожаловать в команду!
+</h2>
+
+<p>
+Присоединяйся к [El19A]ELITKA,
+играй вместе с участниками ELITKA VII
+и давай покажем, кто лучший на поле битвы!
+<br>
+🎮🔥🏆
+</p>
+
+</section>
+
+<footer>
+
+© 2026 ELITKA VII • World of Tanks Blitz
+
+</footer>
+
+</div>
+
+</body>
+</html>

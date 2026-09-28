@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ELITKA VII — Правила</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#f5f7ff;
+
+    background:
+        radial-gradient(circle at 15% 10%,rgba(90,110,255,.22),transparent 30%),
+        radial-gradient(circle at 85% 15%,rgba(0,180,255,.14),transparent 30%),
+        radial-gradient(circle at 50% 90%,rgba(90,60,255,.15),transparent 35%),
+        linear-gradient(135deg,#050711 0%,#091020 45%,#050711 100%);
+
+    background-attachment:fixed;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+
+    background-size:45px 45px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.container{
+    width:min(1150px,94%);
+    margin:auto;
+    padding:20px 0 70px;
+}
+
+/* ГЛАВНОЕ МЕНЮ */
+
+.main-menu{
+    position:sticky;
+    top:12px;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px;
+    margin-bottom:35px;
+
+    background:rgba(8,12,27,.82);
+    border:1px solid rgba(130,145,190,.18);
+    border-radius:18px;
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.04);
+
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.main-menu::-webkit-scrollbar{
+    display:none;
+}
+
+.logo{
+    flex:0 0 auto;
+
+    padding:10px 15px;
+
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    text-decoration:none;
+
+    background:linear-gradient(90deg,#ffffff,#a99cff,#78c8ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.menu-button{
+    flex:0 0 auto;
+
+    display:block;
+
+    padding:11px 14px;
+
+    border-radius:11px;
+
+    text-decoration:none;
+
+    color:#aeb7d0;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(130,145,190,.10);
+
+    font-size:13px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    transition:.2s ease;
+}
+
+.menu-button:hover{
+    color:#fff;
+
+    background:rgba(110,100,255,.14);
+    border-color:rgba(145,125,255,.4);
+
+    transform:translateY(-2px);
+}
+
+.menu-button.active{
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,100,255,.28),
+            rgba(70,150,255,.14)
+        );
+
+    border-color:rgba(145,125,255,.55);
+
+    box-shadow:0 0 20px rgba(120,100,255,.12);
+}
+
+/* ОСНОВНАЯ СЕТКА */
+
+.page-layout{
+    display:grid;
+    grid-template-columns:210px minmax(0,1fr);
+    gap:28px;
+    align-items:start;
+}
+
+/* БОКОВОЕ МЕНЮ */
+
+.side-navigation{
+    position:sticky;
+    top:95px;
+
+    padding:12px;
+
+    background:rgba(10,14,28,.72);
+    border:1px solid rgba(130,145,190,.16);
+    border-radius:18px;
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25),
+        inset 0 1px rgba(255,255,255,.03);
+}
+
+.side-title{
+    padding:8px 10px 12px;
+
+    color:#777f9b;
+
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.side-button{
+    display:block;
+
+    padding:12px 11px;
+    margin:5px 0;
+
+    border-radius:11px;
+
+    text-decoration:none;
+
+    color:#aeb7d0;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(130,145,190,.08);
+
+    font-size:13px;
+    font-weight:600;
+
+    transition:.2s ease;
+}
+
+.side-button:hover{
+    color:#fff;
+
+    background:rgba(110,100,255,.14);
+    border-color:rgba(145,125,255,.35);
+
+    transform:translateX(3px);
+}
+
+.side-button.active{
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,100,255,.28),
+            rgba(70,150,255,.14)
+        );
+
+    border-color:rgba(145,125,255,.5);
+
+    box-shadow:0 0 20px rgba(120,100,255,.10);
+}
+
+/* КОНТЕНТ */
+
+.content-area{
+    min-width:0;
+}
+
+.hero{
+    margin-bottom:22px;
+    padding:30px;
+
+    background:rgba(15,20,38,.72);
+
+    border:1px solid rgba(130,145,190,.16);
+    border-radius:22px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.03);
+
+    backdrop-filter:blur(14px);
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 15px;
+
+    border-radius:999px;
+
+    background:rgba(130,100,255,.12);
+    border:1px solid rgba(150,130,255,.3);
+
+    color:#bdb4ff;
+
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+.hero h1{
+    margin:18px 0 10px;
+
+    font-size:clamp(32px,5vw,52px);
+    font-weight:800;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #a99cff,
+        #78c8ff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin:0;
+
+    color:#8f98b5;
+    font-size:16px;
+    line-height:1.6;
+}
+
+/* ПРАВИЛА */
+
+.rules-box{
+    padding:20px;
+
+    background:rgba(15,20,38,.72);
+
+    border:1px solid rgba(130,145,190,.16);
+    border-radius:22px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.03);
+
+    backdrop-filter:blur(14px);
+}
+
+.rule{
+    margin:10px 0;
+
+    background:rgba(7,10,22,.72);
+
+    border:1px solid rgba(130,145,190,.13);
+    border-radius:15px;
+
+    overflow:hidden;
+
+    transition:.2s ease;
+}
+
+.rule:hover{
+    border-color:rgba(140,120,255,.35);
+}
+
+.rule summary{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:17px 18px;
+
+    cursor:pointer;
+
+    list-style:none;
+
+    color:#ffffff;
+
+    font-size:16px;
+    font-weight:800;
+}
+
+.rule summary::-webkit-details-marker{
+    display:none;
+}
+
+.rule summary::after{
+    content:"+";
+
+    flex:0 0 auto;
+
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    color:#a99cff;
+    background:rgba(120,100,255,.12);
+
+    font-size:20px;
+
+    transition:.2s ease;
+}
+
+.rule[open] summary{
+    background:rgba(110,100,255,.08);
+}
+
+.rule[open] summary::after{
+    content:"−";
+    transform:rotate(180deg);
+}
+
+.rule-content{
+    padding:0 18px 20px;
+
+    color:#cbd1e3;
+
+    font-size:15px;
+    line-height:1.7;
+}
+
+.rule-content p{
+    margin:12px 0;
+}
+
+.rule-content strong{
+    color:#ffffff;
+}
+
+.rule-content .number{
+    color:#aeb8d8;
+    font-weight:700;
+}
+
+/* ТАБЛИЦА ОСКОРБЛЕНИЙ */
+
+.word-table{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    margin-top:15px;
+
+    border:1px solid rgba(130,145,190,.14);
+    border-radius:13px;
+
+    overflow:hidden;
+}
+
+.word-column{
+    padding:15px;
+}
+
+.word-column:first-child{
+    border-right:1px solid rgba(130,145,190,.14);
+}
+
+.word-column-title{
+    margin-bottom:12px;
+
+    font-weight:800;
+    font-size:14px;
+}
+
+.forbidden-title{
+    color:#ff9fae;
+}
+
+.allowed-title{
+    color:#9ff0ba;
+}
+
+.word{
+    margin:8px 0;
+    padding:9px 11px;
+
+    border-radius:9px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#dce1ef;
+}
+
+/* ВАЖНО */
+
+.important{
+    margin-top:18px;
+    padding:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(70,25,40,.35),
+            rgba(15,20,38,.75)
+        );
+
+    border:1px solid rgba(255,100,120,.2);
+    border-radius:18px;
+}
+
+.important h2{
+    margin:0 0 12px;
+
+    color:#ffb7c0;
+    font-size:20px;
+}
+
+.important p{
+    margin:9px 0;
+
+    color:#d9ddec;
+    line-height:1.65;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    margin-top:40px;
+
+    color:#68718d;
+    font-size:13px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media(max-width:750px){
+
+    .container{
+        width:94%;
+        padding-top:10px;
+    }
+
+    .main-menu{
+        top:7px;
+        margin-bottom:20px;
+        border-radius:15px;
+    }
+
+    .logo{
+        font-size:16px;
+        padding:9px 11px;
+    }
+
+    .menu-button{
+        padding:10px 12px;
+        font-size:12px;
+    }
+
+    .page-layout{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .side-navigation{
+        position:static;
+
+        display:flex;
+        align-items:center;
+        gap:6px;
+
+        padding:7px;
+
+        overflow-x:auto;
+        scrollbar-width:none;
+
+        border-radius:15px;
+    }
+
+    .side-navigation::-webkit-scrollbar{
+        display:none;
+    }
+
+    .side-title{
+        display:none;
+    }
+
+    .side-button{
+        flex:0 0 auto;
+
+        margin:0;
+        padding:10px 12px;
+
+        font-size:12px;
+        white-space:nowrap;
+    }
+
+    .hero{
+        padding:22px 18px;
+        border-radius:17px;
+    }
+
+    .rules-box{
+        padding:14px;
+        border-radius:17px;
+    }
+
+    .rule summary{
+        padding:15px;
+
+        font-size:14px;
+    }
+
+    .rule-content{
+        padding:0 15px 17px;
+        font-size:14px;
+    }
+
+    .word-table{
+        grid-template-columns:1fr;
+    }
+
+    .word-column:first-child{
+        border-right:none;
+        border-bottom:1px solid rgba(130,145,190,.14);
+    }
+}
+
+@media(max-width:430px){
+
+    .main-menu{
+        gap:6px;
+    }
+
+    .logo{
+        padding:9px 10px;
+    }
+
+    .menu-button{
+        padding:9px 10px;
+        font-size:11px;
+    }
+
+    .side-button{
+        padding:9px 10px;
+        font-size:11px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="main-menu">
+
+<a class="logo" href="index.html">ELITKA</a>
+
+<a class="menu-button" href="index.html">🏠 Главная</a>
+
+<a class="menu-button" href="advertising.html">Реклама</a>
+
+<a class="menu-button" href="administration.html">Администрация</a>
+
+<a class="menu-button" href="support.html">Тех.Поддержка</a>
+
+<a class="menu-button" href="deputy-owner.html">Зам.Владелец</a>
+
+<a class="menu-button" href="owner.html">Владелец</a>
+
+<a class="menu-button active" href="rules.html">Правила</a>
+
+<a class="menu-button" href="complaints.html">⚠️ Жалобы</a>
+
+<a class="menu-button" href="about.html">О проекте</a>
+
+</nav>
+
+<div class="page-layout">
+
+<aside class="side-navigation">
+
+<div class="side-title">
+Правила
+</div>
+
+<a class="side-button active" href="rules.html">
+📋 Основные правила
+</a>
+
+<a class="side-button" href="complaints.html">
+⚠️ Жалобы
+</a>
+
+</aside>
+
+<main class="content-area">
+
+<section class="hero">
+
+<div class="badge">
+📜 ELITKA VII • RULES
+</div>
+
+<h1>
+Правила
+</h1>
+
+<p>
+Основные правила группы, ограничения и ответственность за нарушения.
+</p>
+
+</section>
+
+<section class="rules-box">
+
+<details class="rule">
+
+<summary>
+1. Оскорбление 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">1.1</span>
+Оскорбления — это высшая форма агрессии, выходящая за рамки обычных обзывательств и использования ненормативной лексики. Мы говорим о более жестких и оскорбительных выражениях.
+</p>
+
+<p>
+<span class="number">1.2</span>
+Дружественная форма разрешена. Шутки и приколы между товарищами допустимы.
+</p>
+
+<p>
+<span class="number">1.3</span>
+Любое затрагивание родственников в негативном ключе является нарушением.
+</p>
+
+<p>
+<span class="number">1.4</span>
+Для примера мы приводим два типа таких оскорблений.
+</p>
+
+<div class="word-table">
+
+<div class="word-column">
+
+<div class="word-column-title forbidden-title">
+❌ Наказуемо
+</div>
+
+<div class="word">Да*н</div>
+<div class="word">Шл*ха</div>
+<div class="word">Пидор*ас</div>
+<div class="word">Ебл*н</div>
+<div class="word">Ху*плет</div>
+<div class="word">Долб*еб</div>
+<div class="word">Иди нах*й</div>
+
+</div>
+
+<div class="word-column">
+
+<div class="word-column-title allowed-title">
+✅ Разрешено
+</div>
+
+<div class="word">Дурак</div>
+<div class="word">Идиот</div>
+<div class="word">Тупой</div>
+<div class="word">Сука</div>
+<div class="word">Придурок</div>
+<div class="word">Дебил</div>
+<div class="word">Пизд*й</div>
+
+</div>
+
+</div>
+
+</div>
+
+</details>
+
+<details class="rule">
+
+<summary>
+2. Спам, флуд 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">2.1</span>
+Спам/флуд — это серьезные нарушения, которые могут существенно повлиять на атмосферу в группе. Речь не идет о шутках или обмене гифками и стикерами.
+</p>
+
+<p>
+<span class="number">2.2</span>
+Спам и флуд начинаются, когда намеренно создается помеха в общении других пользователей. Чрезмерное отправление сообщений, медиафайлов, гифок и стикеров будет строго пресекаться в соответствии с правилами.
+</p>
+
+<p>
+<span class="number">2.3</span>
+Чрезмерная игра в ботов так же запрещена! Не более <strong>10 игровых сообщений подряд</strong> (даже при условии разных ботов/команд).
+</p>
+
+</div>
+
+</details>
+
+<details class="rule">
+
+<summary>
+3. Контент 18+ 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">3.1</span>
+Контент 18+ включает не только реальные изображения, но и мультипликационные форматы, если они содержат расчленёнку, порнографию, свастику, насилие или сцены сексуальной активности.
+</p>
+
+<p>
+<span class="number">3.2</span>
+Запрещены также любые подозрительные изображения, которые могут содержать намёки на совращение или сексуальное поведение. Все такие материалы нарушают правила группы и могут привести к серьёзным санкциям, включая бан.
+</p>
+
+<p>
+<span class="number">3.3</span>
+Мы ценим безопасность и комфорт участников и принимаем все возможные меры для защиты от нежелательного контента.
+</p>
+
+</div>
+
+</details>
+
+<details class="rule">
+
+<summary>
+4. Реклама 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">4.1</span>
+Реклама, включая ссылки, чаты, боты и пиар (бесплатно), строго запрещена в нашей группе без предварительного согласования с администрацией.
+</p>
+
+<p>
+<span class="number">4.2</span>
+Размещение посторонних рекламных материалов, приглашений в другие чаты или промо-акций без разрешения нарушает правила и может привести к наказанию.
+</p>
+
+<p>
+<span class="number">4.3</span>
+Также запрещены разговоры о посторонних группах, сообществах и платформах, которые не связаны с темой нашей группы. Не занимайтесь самовольным продвижением товаров, услуг или других сообществ.
+</p>
+
+</div>
+
+</details>
+
+<details class="rule">
+
+<summary>
+5. Шум / музыка 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">5.1</span>
+Шум, музыка, эхо и перебивания в голосовых чатах создают значительные помехи для нормального общения и затрудняют восприятие информации.
+</p>
+
+<p>
+<span class="number">5.2</span>
+Эхо, которое возникает из-за неправильных настроек микрофона, а также частые перебивания собеседников, нарушают комфортное взаимодействие.
+</p>
+
+<p>
+<span class="number">5.3</span>
+Соблюдайте тишину и уважайте собеседников, избегайте создания шума или музыки, а также не прерывайте других пользователей во время разговоров.
+</p>
+
+</div>
+
+</details>
+
+<details class="rule">
+
+<summary>
+6. Неуважительное отношение к сотрудникам Тех.Поддержки 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">6.1</span>
+Матерные выражения, провокации и манипуляции по отношению к сотрудникам (обращаться в неуважительной форме) сугубо в «Официальной группе Тех.Поддержки» — запрещено.
+</p>
+
+<p>
+<span class="number">6.2</span>
+Выдавать себя за сотрудников, копирование шаблонов и намеренный обман привлекает к ответственности.
+</p>
+
+<p>
+<span class="number">6.3</span>
+Тех.Поддержка имеет право прибегать к наказаниям разного вида и без предупреждений.
+</p>
+
+</div>
+
+</details>
+
+<details class="rule">
+
+<summary>
+7. Дискредитация 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">7.1</span>
+Любые попытки дискредитации или чрезмерного осуждения действий Главной Администрации будут строго пресекаться любым видом наказаний. Мы понимаем, что у каждого могут быть разные взгляды, но публичные обвинения, агрессия и необоснованные высказывания в адрес руководства могут повлиять на атмосферу в группе и привести к негативным последствиям.
+</p>
+
+<p>
+<span class="number">7.2</span>
+Важно помнить, что конструктивная критика всегда приветствуется, но она должна быть обоснованной и уважительной.
+</p>
+
+<p>
+<span class="number">7.3</span>
+Нарушение относится в том числе к каналу «Элитка Новости», так как этот канал служит важным источником информации для участников группы.
+</p>
+
+</div>
+
+</details>
+
+<details class="rule">
+
+<summary>
+8. Угрозы чату 🔻
+</summary>
+
+<div class="rule-content">
+
+<p>
+<span class="number">8.1</span>
+Любые высказывания, а тем более намеренная активность, которая может подвергать чат опасности, являются грубым нарушением и караются баном.
+</p>
+
+<p>
+<span class="number">8.2</span>
+Тесное общение с забаненными, а также любые другие действия, при которых вы можете подпадать под пункт подозреваемых или соучастников, также рассматриваются как нарушения.
+</p>
+
+</div>
+
+</details>
+
+<div class="important">
+
+<h2>
+❗ Важно
+</h2>
+
+<p>
+Обход наказания с твинка наказуем.
+</p>
+
+<p>
+Маскировка оскорблений с помощью символов (например, «шлю##») также расценивается как оскорбление и подлежит наказанию.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 ELITKA VII • Rules
+
+</footer>
+
+</main>
+
+</div>
+
+</div>
+
+</body>
+</html>

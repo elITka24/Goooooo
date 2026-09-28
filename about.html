@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ELITKA VII — О проекте</title>
+
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,Helvetica,sans-serif;
+color:#f5f7ff;
+
+background:
+radial-gradient(circle at 15% 10%,rgba(90,110,255,.22),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(0,180,255,.14),transparent 30%),
+radial-gradient(circle at 50% 90%,rgba(90,60,255,.15),transparent 35%),
+linear-gradient(135deg,#050711 0%,#091020 45%,#050711 100%);
+
+background-attachment:fixed;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+
+background:
+linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+
+background-size:45px 45px;
+mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.container{
+width:min(1150px,94%);
+margin:auto;
+padding:20px 0 70px;
+}
+
+/* ГЛАВНОЕ МЕНЮ */
+
+.main-menu{
+position:sticky;
+top:12px;
+z-index:1000;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:10px;
+margin-bottom:35px;
+
+background:rgba(8,12,27,.82);
+border:1px solid rgba(130,145,190,.18);
+border-radius:18px;
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+box-shadow:
+0 15px 45px rgba(0,0,0,.35),
+inset 0 1px rgba(255,255,255,.04);
+
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.main-menu::-webkit-scrollbar{
+display:none;
+}
+
+.logo{
+flex:0 0 auto;
+
+padding:10px 15px;
+
+font-size:18px;
+font-weight:900;
+letter-spacing:1px;
+
+text-decoration:none;
+
+background:linear-gradient(90deg,#ffffff,#a99cff,#78c8ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.menu-button{
+flex:0 0 auto;
+
+display:block;
+
+padding:11px 14px;
+
+border-radius:11px;
+
+text-decoration:none;
+
+color:#aeb7d0;
+background:rgba(255,255,255,.025);
+border:1px solid rgba(130,145,190,.10);
+
+font-size:13px;
+font-weight:600;
+
+white-space:nowrap;
+
+transition:.2s ease;
+}
+
+.menu-button:hover{
+color:#fff;
+background:rgba(110,100,255,.14);
+border-color:rgba(145,125,255,.4);
+transform:translateY(-2px);
+}
+
+.menu-button.active{
+color:#fff;
+
+background:
+linear-gradient(
+135deg,
+rgba(120,100,255,.28),
+rgba(70,150,255,.14)
+);
+
+border-color:rgba(145,125,255,.55);
+
+box-shadow:0 0 20px rgba(120,100,255,.12);
+}
+
+/* СЕТКА */
+
+.page-layout{
+display:grid;
+grid-template-columns:210px minmax(0,1fr);
+gap:28px;
+align-items:start;
+}
+
+/* БОКОВОЕ МЕНЮ */
+
+.side-navigation{
+position:sticky;
+top:95px;
+
+padding:12px;
+
+background:rgba(10,14,28,.72);
+border:1px solid rgba(130,145,190,.16);
+border-radius:18px;
+
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.25),
+inset 0 1px rgba(255,255,255,.03);
+}
+
+.side-title{
+padding:8px 10px 12px;
+
+color:#777f9b;
+
+font-size:11px;
+font-weight:800;
+letter-spacing:1px;
+
+text-transform:uppercase;
+}
+
+.side-button{
+display:block;
+
+padding:12px 11px;
+margin:5px 0;
+
+border-radius:11px;
+
+text-decoration:none;
+
+color:#aeb7d0;
+background:rgba(255,255,255,.025);
+border:1px solid rgba(130,145,190,.08);
+
+font-size:13px;
+font-weight:600;
+
+transition:.2s ease;
+}
+
+.side-button:hover{
+color:#fff;
+background:rgba(110,100,255,.14);
+border-color:rgba(145,125,255,.35);
+transform:translateX(3px);
+}
+
+.side-button.active{
+color:#fff;
+
+background:
+linear-gradient(
+135deg,
+rgba(120,100,255,.28),
+rgba(70,150,255,.14)
+);
+
+border-color:rgba(145,125,255,.5);
+
+box-shadow:0 0 20px rgba(120,100,255,.10);
+}
+
+/* КОНТЕНТ */
+
+.content-area{
+min-width:0;
+}
+
+.hero{
+margin-bottom:22px;
+padding:30px;
+
+background:rgba(15,20,38,.72);
+
+border:1px solid rgba(130,145,190,.16);
+border-radius:22px;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.28),
+inset 0 1px rgba(255,255,255,.03);
+
+backdrop-filter:blur(14px);
+}
+
+.badge{
+display:inline-block;
+
+padding:8px 15px;
+
+border-radius:999px;
+
+background:rgba(130,100,255,.12);
+border:1px solid rgba(150,130,255,.3);
+
+color:#bdb4ff;
+
+font-size:13px;
+letter-spacing:1px;
+}
+
+.hero h1{
+margin:18px 0 10px;
+
+font-size:clamp(32px,5vw,52px);
+font-weight:800;
+
+background:linear-gradient(
+90deg,
+#ffffff,
+#a99cff,
+#78c8ff
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+margin:0;
+
+color:#8f98b5;
+font-size:16px;
+line-height:1.6;
+}
+
+/* СЕКЦИИ */
+
+.section{
+margin:18px 0;
+padding:25px;
+
+background:rgba(15,20,38,.72);
+
+border:1px solid rgba(130,145,190,.16);
+border-radius:22px;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.28),
+inset 0 1px rgba(255,255,255,.03);
+
+backdrop-filter:blur(14px);
+}
+
+.section h2{
+margin:0 0 18px;
+
+color:#fff;
+font-size:23px;
+}
+
+.section p{
+margin:10px 0;
+
+color:#cbd1e3;
+
+font-size:15px;
+line-height:1.75;
+}
+
+/* КАРТОЧКИ */
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+}
+
+.info-card{
+padding:18px;
+
+background:rgba(7,10,22,.72);
+
+border:1px solid rgba(130,145,190,.13);
+border-radius:14px;
+}
+
+.info-card h3{
+margin:0 0 9px;
+
+color:#fff;
+font-size:16px;
+}
+
+.info-card p{
+margin:0;
+
+color:#9fa8c1;
+font-size:14px;
+line-height:1.55;
+}
+
+/* ИСТОРИЯ */
+
+.history{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.chapter{
+background:rgba(7,10,22,.72);
+
+border:1px solid rgba(130,145,190,.13);
+border-radius:15px;
+
+overflow:hidden;
+}
+
+.chapter summary{
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+gap:15px;
+
+padding:18px 20px;
+
+cursor:pointer;
+
+list-style:none;
+
+color:#fff;
+
+font-size:17px;
+font-weight:800;
+}
+
+.chapter summary::-webkit-details-marker{
+display:none;
+}
+
+.chapter summary::after{
+content:"+";
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+width:30px;
+height:30px;
+
+flex:0 0 auto;
+
+border-radius:50%;
+
+background:rgba(120,100,255,.12);
+color:#a99cff;
+
+font-size:21px;
+
+transition:.2s ease;
+}
+
+.chapter[open] summary{
+background:rgba(110,100,255,.08);
+}
+
+.chapter[open] summary::after{
+content:"−";
+transform:rotate(180deg);
+}
+
+.chapter-content{
+padding:0 20px 22px;
+
+color:#cbd1e3;
+}
+
+.chapter-content p{
+margin:14px 0;
+
+color:#bfc7db;
+
+font-size:15px;
+line-height:1.8;
+}
+
+.chapter-content p:first-child{
+margin-top:0;
+}
+
+.chapter-note{
+margin-top:18px;
+padding:13px 15px;
+
+background:rgba(120,100,255,.08);
+
+border-left:3px solid #8d7cff;
+border-radius:8px;
+
+color:#aeb7d0;
+
+font-size:13px;
+line-height:1.6;
+}
+
+/* ВАЖНЫЙ БЛОК */
+
+.important{
+border-color:rgba(120,100,255,.22);
+
+background:
+linear-gradient(
+135deg,
+rgba(55,45,110,.30),
+rgba(15,20,38,.75)
+);
+}
+
+.important h2{
+color:#c3baff;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+
+margin-top:40px;
+
+color:#68718d;
+font-size:13px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media(max-width:750px){
+
+.container{
+width:94%;
+padding-top:10px;
+}
+
+.main-menu{
+top:7px;
+margin-bottom:20px;
+border-radius:15px;
+}
+
+.logo{
+font-size:16px;
+padding:9px 11px;
+}
+
+.menu-button{
+padding:10px 12px;
+font-size:12px;
+}
+
+.page-layout{
+grid-template-columns:1fr;
+gap:18px;
+}
+
+.side-navigation{
+position:static;
+
+display:flex;
+align-items:center;
+gap:6px;
+
+padding:7px;
+
+overflow-x:auto;
+scrollbar-width:none;
+
+border-radius:15px;
+}
+
+.side-navigation::-webkit-scrollbar{
+display:none;
+}
+
+.side-title{
+display:none;
+}
+
+.side-button{
+flex:0 0 auto;
+
+margin:0;
+padding:10px 12px;
+
+font-size:12px;
+white-space:nowrap;
+}
+
+.hero{
+padding:22px 18px;
+border-radius:17px;
+}
+
+.section{
+padding:20px 17px;
+border-radius:17px;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.chapter summary{
+padding:15px;
+font-size:15px;
+}
+
+.chapter-content{
+padding:0 15px 18px;
+}
+
+.chapter-content p{
+font-size:14px;
+line-height:1.7;
+}
+}
+
+@media(max-width:430px){
+
+.main-menu{
+gap:6px;
+}
+
+.logo{
+padding:9px 10px;
+}
+
+.menu-button{
+padding:9px 10px;
+font-size:11px;
+}
+
+.side-button{
+padding:9px 10px;
+font-size:11px;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<nav class="main-menu">
+
+<a class="logo" href="index.html">ELITKA</a>
+
+<a class="menu-button" href="index.html">🏠 Главная</a>
+
+<a class="menu-button" href="advertising.html">Реклама</a>
+
+<a class="menu-button" href="administration.html">Администрация</a>
+
+<a class="menu-button" href="support.html">Тех.Поддержка</a>
+
+<a class="menu-button" href="deputy-owner.html">Зам.Владелец</a>
+
+<a class="menu-button" href="owner.html">Владелец</a>
+
+<a class="menu-button" href="rules.html">Правила</a>
+
+<a class="menu-button" href="complaints.html">⚠️ Жалобы</a>
+
+<a class="menu-button active" href="about.html">О проекте</a>
+
+</nav>
+
+<div class="page-layout">
+
+<aside class="side-navigation">
+
+<div class="side-title">
+О проекте
+</div>
+
+<a class="side-button active" href="#about">
+ℹ️ О проекте
+</a>
+
+<a class="side-button" href="#history">
+📖 История чата
+</a>
+
+</aside>
+
+<main class="content-area">
+
+<section class="hero" id="about">
+
+<div class="badge">
+🌐 ELITKA VII • ABOUT
+</div>
+
+<h1>
+О проекте
+</h1>
+
+<p>
+Информация о нашем чате, его целях и истории.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>
+💬 Что это за проект?
+</h2>
+
+<p>
+ELITKA VII — это чат для общения, знакомств и совместного времяпрепровождения.
+</p>
+
+<p>
+Мы уже несколько лет поддерживаем эту платформу и продолжаем развивать её, чтобы каждый участник мог чувствовать себя комфортно.
+</p>
+
+<p>
+Наша главная цель — создать пространство для общения, где люди могут знакомиться, находить новых друзей, обсуждать разные темы и просто проводить время вместе.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>
+✨ Наши принципы
+</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h3>
+💬 Комфортное общение
+</h3>
+
+<p>
+Мы стараемся поддерживать атмосферу, в которой каждому участнику комфортно общаться и находиться в чате.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>
+🛡️ Порядок
+</h3>
+
+<p>
+Администрация следит за соблюдением правил и старается поддерживать порядок внутри сообщества.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>
+🚀 Развитие
+</h3>
+
+<p>
+Проект постоянно развивается: появляются новые возможности, сотрудники, системы и идеи.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="history">
+
+<h2>
+📖 История чата
+</h2>
+
+<div class="history">
+
+<details class="chapter">
+
+<summary>
+Глава I — Случайное приглашение
+</summary>
+
+<div class="chapter-content">
+
+<p>
+История начинается летом 2019 года. Антон случайно попадает в Telegram-группу «Элитное сообщество», где знакомится с большим количеством людей и постепенно привыкает к новой для себя атмосфере общения.
+</p>
+
+<p>
+Одним из первых важных знакомств становится Лёша. Они быстро находят общий язык и начинают проводить много времени в чате.
+</p>
+
+<p>
+После конфликта с администрацией Антон получает наказание и покидает группу. Именно этот момент становится отправной точкой для идеи создать собственное пространство — со своими правилами и системой.
+</p>
+
+<p>
+Лёша предлагает создать новую группу. После обсуждений они решают назвать её «Элитка» — в память о том самом «Элитном сообществе», с которого всё началось.
+</p>
+
+<p>
+Лёша берёт на себя техническую часть: ботов, настройки и защиту. Антон занимается атмосферой, правилами, приветствиями и системой администрации.
+</p>
+
+<p>
+Начинается активный набор участников. В чат приходят старые знакомые и новые люди, а затем «Элитка» начинает быстро расти.
+</p>
+
+<p>
+Так появляется основа проекта: техническая команда, администрация и люди, которые постепенно превращают обычный Telegram-чат в настоящее сообщество.
+</p>
+
+<div class="chapter-note">
+📌 Начало проекта — 2019 год. Именно этот период стал фундаментом всей дальнейшей истории «Элитки».
+</div>
+
+</div>
+
+</details>
+
+<details class="chapter">
+
+<summary>
+Глава II — Приспособиться, чтобы…
+</summary>
+
+<div class="chapter-content">
+
+<p>
+Со временем «Элитка» становится стабильнее. Антон занимается людьми и атмосферой, а Лёша продолжает развивать техническую сторону.
+</p>
+
+<p>
+В чат приходит Даша, известная под ником «Лимон». У неё уже был собственный крупный чат, поэтому она хорошо понимала принципы работы сообществ.
+</p>
+
+<p>
+Между Дашей, Антоном и Лёшей появляется дружба. Однако вместе с этим возникает сложная ситуация, связанная с владельцем старого «Элитного сообщества».
+</p>
+
+<p>
+Перед командой встаёт спорный выбор. Они долго обсуждают последствия и в итоге принимают решение, которое становится одним из самых неоднозначных эпизодов ранней истории проекта.
+</p>
+
+<p>
+События той ночи сильно меняют «Элитку». Команда получает новых участников, но вместе с ростом приходит и понимание того, насколько серьёзными могут быть последствия решений, принятых под влиянием эмоций.
+</p>
+
+<p>
+После произошедшего Антон начинает по-другому смотреть на управление проектом. Он понимает, что доверие, ответственность и решения администрации напрямую влияют на будущее всего сообщества.
+</p>
+
+<div class="chapter-note">
+📌 Этот период стал важным уроком для проекта и его руководства: рост сообщества всегда сопровождается ответственностью за принимаемые решения.
+</div>
+
+</div>
+
+</details>
+
+<details class="chapter">
+
+<summary>
+Глава III — Внезапный поворот
+</summary>
+
+<div class="chapter-content">
+
+<p>
+Проходит время, и команда сталкивается с серьёзной потерей — Лёша решает покинуть проект.
+</p>
+
+<p>
+Для Антона это становится большим ударом: Лёша был одним из людей, благодаря которым «Элитка» вообще появилась.
+</p>
+
+<p>
+После его ухода Антон берёт на себя часть технической работы, а Ника становится его опорой в управлении администрацией.
+</p>
+
+<p>
+Вместе они выстраивают новую систему. Появляются графики набора участников, распределение обязанностей и более организованная работа администрации.
+</p>
+
+<p>
+Постепенно «Элитка» продолжает расти и достигает новых показателей. Вместе с ростом появляются новые люди, новые администраторы и новые проблемы.
+</p>
+
+<p>
+Со временем отношения внутри команды начинают меняться. Между Антоном и Никой возникает серьёзный конфликт из-за разных взглядов на управление и наказания.
+</p>
+
+<p>
+Ника складывает полномочия. Название чата на короткое время меняется на «rip», символизируя тяжёлый период для проекта.
+</p>
+
+<p>
+Однако история на этом не заканчивается. На место Ники приходит Ангелина, и вместе с ней «Элитка» постепенно возвращается к прежнему развитию.
+</p>
+
+<div class="chapter-note">
+📌 Глава показывает, как проект пережил уход одного из ключевых людей и серьёзный внутренний конфликт.
+</div>
+
+</div>
+
+</details>
+
+<details class="chapter">
+
+<summary>
+Глава IV — Эпоха изменений
+</summary>
+
+<div class="chapter-content">
+
+<p>
+Одним из важных людей нового периода становится Рома — участник, находившийся в проекте практически с самого начала.
+</p>
+
+<p>
+Антон назначает его главным администратором, рассчитывая получить сильного человека, который сможет помогать принимать важные решения.
+</p>
+
+<p>
+Вместе с Мишей и Настей формируется новая команда, которая помогает развивать чат не только за счёт привлечения участников, но и благодаря идеям и новым решениям.
+</p>
+
+<p>
+Telegram постепенно меняется. Старые способы набора участников становятся всё сложнее, аккаунты получают ограничения, поэтому команда начинает искать другие варианты развития.
+</p>
+
+<p>
+В результате «Элитка» достигает отметки в десять тысяч участников. Проект становится значительно крупнее, а вместе с этим возрастает количество задач и ответственности.
+</p>
+
+<p>
+В этот период появляются новые важные участники, а команда продолжает работать над атмосферой и удержанием людей.
+</p>
+
+<p>
+Однако вместе с ростом возникает новая угроза: злоумышленник начинает атаковать группу через массовые жалобы и нежелательный контент.
+</p>
+
+<p>
+Команда собирается для решения проблемы. После анализа ситуации Антон понимает возможную причину и принимает решение отключить открытую ссылку на группу.
+</p>
+
+<p>
+Это помогает остановить поток ботов и постепенно восстановить работу группы в регионах, где появились ограничения.
+</p>
+
+<div class="chapter-note">
+📌 Рост до 10 000 участников стал одним из важнейших этапов развития проекта, а атака показала необходимость серьёзно относиться к безопасности.
+</div>
+
+</div>
+
+</details>
+
+<details class="chapter">
+
+<summary>
+Глава V — Борьба за власть, искушение
+</summary>
+
+<div class="chapter-content">
+
+<p>
+Следующий период истории связан с появлением чата «Дом», который был тесно связан с «Элиткой».
+</p>
+
+<p>
+Между Антоном и некоторыми участниками «Дома» возникают серьёзные разногласия. Постепенно конфликт перерастает в борьбу за влияние и доверие.
+</p>
+
+<p>
+Ситуация осложняется тем, что некоторые участники начинают переходить между сообществами, а отношения между руководителями становятся всё напряжённее.
+</p>
+
+<p>
+В какой-то момент Антон и Кирилл оказываются перед выбором: продолжать развивать совместные проекты или разделить их.
+</p>
+
+<p>
+Параллельно «Элитка» переживает спад численности. После падения аудитории команда начинает искать способы восстановить активность и модернизировать проект.
+</p>
+
+<p>
+В этот период важную роль играет Софа. Она активно помогает Антону, участвует в развитии группы, настройке системы и оформлении форумов.
+</p>
+
+<p>
+Одним из важных решений становится создание собственной технической поддержки. Для неё используется бывший чат «Дом», а оставшиеся участники постепенно переходят в «Элитку».
+</p>
+
+<p>
+Появляются новые люди, новые сотрудники и новые направления. Некоторые бывшие противники становятся союзниками, а старые конфликты постепенно уходят на второй план.
+</p>
+
+<p>
+История показывает, насколько сильно со временем меняются отношения внутри большого сообщества: люди уходят, возвращаются, становятся друзьями или противниками, а сам проект продолжает существовать и развиваться.
+</p>
+
+<div class="chapter-note">
+📌 Именно этот этап привёл к появлению новых направлений проекта, в том числе системы технической поддержки.
+</div>
+
+</div>
+
+</details>
+
+</div>
+
+</section>
+
+<section class="section important">
+
+<h2>
+❤️ Продолжение следует
+</h2>
+
+<p>
+За несколько лет «Элитка» прошла через множество изменений: от небольшой группы, созданной двумя людьми, до большого сообщества со своей администрацией, правилами, технической поддержкой и собственной историей.
+</p>
+
+<p>
+Мы продолжаем поддерживать проект и бороться за комфортное общение для всех участников.
+</p>
+
+<p>
+А история «Элитки» продолжается вместе с людьми, которые остаются её частью.
+</p>
+
+</section>
+
+<footer>
+
+© 2026 ELITKA VII • Official Project Portal
+
+</footer>
+
+</main>
+
+</div>
+
+</div>
+
+</body>
+</html>

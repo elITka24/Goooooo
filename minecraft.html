@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ELITKA VII — Minecraft</title>
+
+<style>
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,Helvetica,sans-serif;
+color:#f5f7ff;
+
+background:
+radial-gradient(circle at 15% 10%,rgba(80,200,100,.20),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(0,180,255,.12),transparent 30%),
+radial-gradient(circle at 50% 90%,rgba(60,160,80,.12),transparent 35%),
+linear-gradient(135deg,#050711 0%,#091020 45%,#050711 100%);
+
+background-attachment:fixed;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+
+background:
+linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+
+background-size:45px 45px;
+mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.container{
+width:min(1150px,94%);
+margin:auto;
+padding:20px 0 70px;
+}
+
+/* ГЛАВНОЕ МЕНЮ */
+
+.main-menu{
+position:sticky;
+top:12px;
+z-index:1000;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:10px;
+margin-bottom:30px;
+
+background:rgba(8,12,27,.82);
+border:1px solid rgba(130,145,190,.18);
+border-radius:18px;
+
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+
+box-shadow:
+0 15px 45px rgba(0,0,0,.35),
+inset 0 1px rgba(255,255,255,.04);
+
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.main-menu::-webkit-scrollbar{
+display:none;
+}
+
+.logo{
+flex:0 0 auto;
+
+padding:10px 15px;
+
+font-size:18px;
+font-weight:900;
+letter-spacing:1px;
+
+text-decoration:none;
+
+background:linear-gradient(90deg,#ffffff,#a99cff,#78c8ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.menu-button{
+flex:0 0 auto;
+
+display:block;
+
+padding:11px 14px;
+
+border-radius:11px;
+
+text-decoration:none;
+
+color:#aeb7d0;
+background:rgba(255,255,255,.025);
+border:1px solid rgba(130,145,190,.10);
+
+font-size:13px;
+font-weight:600;
+
+white-space:nowrap;
+
+transition:.2s ease;
+}
+
+.menu-button:hover{
+color:#fff;
+background:rgba(110,100,255,.14);
+border-color:rgba(145,125,255,.4);
+transform:translateY(-2px);
+}
+
+.menu-button.active{
+color:#fff;
+
+background:
+linear-gradient(
+135deg,
+rgba(120,100,255,.28),
+rgba(70,150,255,.14)
+);
+
+border-color:rgba(145,125,255,.55);
+
+box-shadow:0 0 20px rgba(120,100,255,.12);
+}
+
+/* ОСНОВНОЙ БЛОК */
+
+.hero{
+position:relative;
+overflow:hidden;
+
+padding:45px 35px;
+margin-bottom:20px;
+
+border-radius:24px;
+
+background:
+linear-gradient(
+135deg,
+rgba(20,70,35,.78),
+rgba(10,20,30,.86)
+);
+
+border:1px solid rgba(100,220,130,.25);
+
+box-shadow:
+0 25px 70px rgba(0,0,0,.35);
+}
+
+.hero::after{
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+120deg,
+transparent 20%,
+rgba(100,220,130,.08),
+transparent 70%
+);
+
+pointer-events:none;
+}
+
+.badge{
+display:inline-block;
+
+padding:8px 14px;
+
+border-radius:999px;
+
+background:rgba(100,220,130,.10);
+border:1px solid rgba(100,220,130,.25);
+
+color:#9ff0ae;
+
+font-size:13px;
+font-weight:700;
+letter-spacing:1px;
+}
+
+.hero h1{
+margin:18px 0 10px;
+
+font-size:clamp(36px,6vw,60px);
+line-height:1;
+
+color:#fff;
+}
+
+.hero p{
+max-width:750px;
+
+margin:0;
+
+color:#b7c4bc;
+
+font-size:16px;
+line-height:1.7;
+}
+
+/* ФОТО */
+
+.gallery{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:12px;
+
+margin-bottom:20px;
+}
+
+.gallery-main{
+width:100%;
+height:100%;
+min-height:330px;
+
+object-fit:cover;
+
+border-radius:19px;
+
+border:1px solid rgba(100,220,130,.18);
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.3);
+
+transition:.25s ease;
+}
+
+.gallery-side{
+display:grid;
+grid-template-rows:1fr 1fr;
+gap:12px;
+}
+
+.gallery-side img{
+width:100%;
+height:100%;
+min-height:155px;
+
+object-fit:cover;
+
+border-radius:19px;
+
+border:1px solid rgba(100,220,130,.16);
+
+transition:.25s ease;
+}
+
+.gallery img:hover{
+transform:scale(1.015);
+
+border-color:rgba(100,220,130,.45);
+}
+
+/* КАРТОЧКИ */
+
+.section{
+margin:18px 0;
+padding:26px;
+
+background:rgba(15,20,38,.76);
+
+border:1px solid rgba(130,145,190,.16);
+border-radius:21px;
+
+box-shadow:
+0 20px 55px rgba(0,0,0,.25),
+inset 0 1px rgba(255,255,255,.03);
+
+backdrop-filter:blur(14px);
+}
+
+.section h2{
+margin:0 0 18px;
+
+font-size:24px;
+color:#fff;
+}
+
+.section p{
+color:#c4ccdc;
+line-height:1.7;
+}
+
+/* ПРАВИЛА */
+
+.rules{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+
+.rule-box{
+padding:20px;
+
+border-radius:15px;
+
+background:rgba(7,10,22,.72);
+
+border:1px solid rgba(130,145,190,.12);
+}
+
+.rule-box h3{
+margin:0 0 14px;
+
+font-size:17px;
+}
+
+.rule-box ul{
+margin:0;
+padding-left:20px;
+}
+
+.rule-box li{
+margin:9px 0;
+
+color:#cbd1e3;
+line-height:1.5;
+}
+
+.forbidden{
+border-color:rgba(255,100,120,.16);
+}
+
+.forbidden h3{
+color:#ffb0b0;
+}
+
+.allowed{
+border-color:rgba(100,220,130,.16);
+}
+
+.allowed h3{
+color:#9ff0ae;
+}
+
+/* ВАЖНЫЕ УВЕДОМЛЕНИЯ */
+
+.notice{
+margin:11px 0;
+padding:16px 18px;
+
+background:rgba(80,70,140,.16);
+
+border:1px solid rgba(140,120,255,.20);
+
+border-radius:13px;
+
+color:#dce0ef;
+
+line-height:1.6;
+}
+
+.notice strong{
+color:#fff;
+}
+
+/* СЕРВЕР */
+
+.server-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.server{
+padding:22px;
+
+border-radius:16px;
+
+background:
+linear-gradient(
+135deg,
+rgba(35,70,45,.28),
+rgba(7,10,22,.72)
+);
+
+border:1px solid rgba(100,220,130,.16);
+}
+
+.server h3{
+margin:0 0 18px;
+
+color:#fff;
+font-size:19px;
+}
+
+.server-row{
+margin:12px 0;
+}
+
+.server-label{
+display:block;
+
+margin-bottom:6px;
+
+color:#77819b;
+
+font-size:11px;
+font-weight:800;
+letter-spacing:.7px;
+
+text-transform:uppercase;
+}
+
+.server-value{
+display:block;
+
+padding:12px 13px;
+
+border-radius:10px;
+
+background:rgba(0,0,0,.28);
+
+color:#e9edf8;
+
+font-family:monospace;
+font-size:14px;
+
+word-break:break-word;
+}
+
+/* БЫСТРЫЙ СТАРТ */
+
+.steps{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.step{
+padding:20px;
+
+background:rgba(7,10,22,.72);
+
+border:1px solid rgba(130,145,190,.13);
+border-radius:15px;
+}
+
+.step-number{
+display:flex;
+align-items:center;
+justify-content:center;
+
+width:35px;
+height:35px;
+
+margin-bottom:12px;
+
+border-radius:10px;
+
+background:rgba(100,220,130,.12);
+
+color:#9ff0ae;
+
+font-weight:800;
+}
+
+.step h3{
+margin:0 0 8px;
+
+font-size:16px;
+color:#fff;
+}
+
+.step p{
+margin:0;
+
+color:#9fa8bd;
+
+font-size:13px;
+line-height:1.6;
+}
+
+/* ФИНАЛ */
+
+.final{
+text-align:center;
+
+margin-top:20px;
+padding:30px;
+
+background:
+linear-gradient(
+135deg,
+rgba(30,80,45,.30),
+rgba(15,20,38,.76)
+);
+
+border:1px solid rgba(100,220,130,.20);
+border-radius:21px;
+}
+
+.final h2{
+margin:0 0 10px;
+
+color:#fff;
+}
+
+.final p{
+margin:0;
+
+color:#aeb8c8;
+line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+
+margin-top:35px;
+
+color:#68718d;
+font-size:13px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+
+@media(max-width:850px){
+
+.steps{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:700px){
+
+.container{
+width:94%;
+padding-top:10px;
+}
+
+.main-menu{
+top:7px;
+margin-bottom:20px;
+border-radius:15px;
+}
+
+.logo{
+font-size:16px;
+padding:9px 11px;
+}
+
+.menu-button{
+padding:10px 12px;
+font-size:12px;
+}
+
+.hero{
+padding:30px 22px;
+border-radius:18px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery-main{
+min-height:230px;
+}
+
+.gallery-side{
+grid-template-columns:1fr 1fr;
+grid-template-rows:none;
+}
+
+.rules,
+.server-grid,
+.steps{
+grid-template-columns:1fr;
+}
+
+.section{
+padding:20px 17px;
+border-radius:17px;
+}
+
+}
+
+@media(max-width:430px){
+
+.gallery-side{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.main-menu{
+gap:6px;
+}
+
+.logo{
+padding:9px 10px;
+}
+
+.menu-button{
+padding:9px 10px;
+font-size:11px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ГЛАВНОЕ МЕНЮ -->
+
+<nav class="main-menu">
+
+<a class="logo" href="index.html">
+ELITKA
+</a>
+
+<a class="menu-button" href="index.html">
+🏠 Главная
+</a>
+
+<a class="menu-button" href="advertising.html">
+Реклама
+</a>
+
+<a class="menu-button" href="administration.html">
+Администрация
+</a>
+
+<a class="menu-button" href="support.html">
+Тех.Поддержка
+</a>
+
+<a class="menu-button" href="deputy-owner.html">
+Зам.Владелец
+</a>
+
+<a class="menu-button" href="owner.html">
+Владелец
+</a>
+
+<a class="menu-button" href="rules.html">
+Правила
+</a>
+
+<a class="menu-button" href="complaints.html">
+⚠️ Жалобы
+</a>
+
+<a class="menu-button" href="about.html">
+О проекте
+</a>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="badge">
+⛏️ ELITKA VII • MINECRAFT
+</div>
+
+<h1>
+Minecraft
+</h1>
+
+<p>
+Наши администраторы регулярно запускают сервер,
+на котором можно играть вместе с участниками ELITKA VII —
+с компьютера или телефона.
+</p>
+
+</section>
+
+<section class="gallery">
+
+<img
+class="gallery-main"
+src="https://i.postimg.cc/YSHzvJkX/IMG-7189.jpg"
+alt="Minecraft"
+
+>
+
+<div class="gallery-side">
+
+<img
+src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?auto=format&fit=crop&w=1000&q=80"
+alt="Minecraft строительство"
+
+>
+
+<img
+src="minecraft3.jpg"
+alt="Minecraft — игровой мир"
+
+>
+
+</div>
+
+</section>
+
+<!-- О СЕРВЕРЕ -->
+
+<section class="section">
+
+<h2>
+🎮 Наш Minecraft-сервер
+</h2>
+
+<p>
+Хочешь поиграть вместе с участниками ELITKA VII?
+Наш сервер создан для совместной игры, строительства,
+исследований и просто приятного времяпрепровождения.
+</p>
+
+<p>
+Подключиться можно как с компьютера, так и с телефона.
+Перед подключением обязательно проверь версию игры
+и сообщи свой игровой ник администраторам.
+</p>
+
+</section>
+
+<!-- ПРАВИЛА -->
+
+<section class="section">
+
+<h2>
+📜 Правила сервера
+</h2>
+
+<div class="rules">
+
+<div class="rule-box forbidden">
+
+<h3>
+❌ Запрещено
+</h3>
+
+<ul>
+
+<li>
+Использование читов, включая X-Ray.
+</li>
+
+<li>
+Полёты и любые другие нечестные преимущества.
+</li>
+
+<li>
+Любые сторонние средства, которые дают преимущество
+над другими игроками.
+</li>
+
+</ul>
+
+</div>
+
+<div class="rule-box allowed">
+
+<h3>
+✅ Разрешено
+</h3>
+
+<ul>
+
+<li>
+Карты.
+</li>
+
+<li>
+Шейдеры.
+</li>
+
+<li>
+Текстур-паки.
+</li>
+
+<li>
+Визуальные улучшения, которые не дают игрового преимущества.
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- КАК ЗАЙТИ -->
+
+<section class="section">
+
+<h2>
+🔑 Как зайти на сервер?
+</h2>
+
+<div class="notice">
+
+⚠️ <strong>Microsoft:</strong>
+для подключения необходимо войти в Minecraft
+через аккаунт Microsoft.
+
+</div>
+
+<div class="notice">
+
+⚠️ <strong>Белый список:</strong>
+напиши администраторам свой игровой ник.
+После этого тебя добавят в whitelist сервера.
+
+</div>
+
+<div class="notice">
+
+⚠️ <strong>Важно:</strong>
+используй правильную версию Minecraft
+для своего устройства.
+
+</div>
+
+</section>
+
+<!-- ПК -->
+
+<section class="section">
+
+<h2>
+💻 Подключение с ПК
+</h2>
+
+<div class="server-grid">
+
+<div class="server">
+
+<h3>
+🖥️ Minecraft Java Edition
+</h3>
+
+<div class="server-row">
+
+<span class="server-label">
+Версия
+</span>
+
+<span class="server-value">
+1.21.11
+</span>
+
+</div>
+
+<div class="server-row">
+
+<span class="server-label">
+Адрес сервера
+</span>
+
+<span class="server-value">
+ElitkaVI.aternos.me:15797
+</span>
+
+</div>
+
+<p>
+Открой Minecraft → Сетевая игра → Добавить сервер.
+Введи адрес сервера и сохрани его.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ТЕЛЕФОН -->
+
+<section class="section">
+
+<h2>
+📱 Подключение с телефона
+</h2>
+
+<div class="server-grid">
+
+<div class="server">
+
+<h3>
+📱 Minecraft Bedrock Edition
+</h3>
+
+<div class="server-row">
+
+<span class="server-label">
+Версия
+</span>
+
+<span class="server-value">
+1.21.120
+</span>
+
+</div>
+
+<div class="server-row">
+
+<span class="server-label">
+Название
+</span>
+
+<span class="server-value">
+ElitkaVI
+</span>
+
+</div>
+
+<div class="server-row">
+
+<span class="server-label">
+Адрес сервера
+</span>
+
+<span class="server-value">
+ElitkaVI.aternos.me
+</span>
+
+</div>
+
+<p>
+Добавь сервер в список серверов Minecraft
+и подключись после добавления в whitelist.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- БЫСТРЫЙ СТАРТ -->
+
+<section class="section">
+
+<h2>
+🚀 Быстрый старт
+</h2>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-number">
+1
+</div>
+
+<h3>
+Войди в Microsoft
+</h3>
+
+<p>
+Проверь, что Minecraft подключён
+к твоему аккаунту Microsoft.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+2
+</div>
+
+<h3>
+Отправь ник
+</h3>
+
+<p>
+Напиши администраторам свой точный
+игровой ник.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+3
+</div>
+
+<h3>
+Добавь сервер
+</h3>
+
+<p>
+Используй адрес сервера и версию,
+соответствующие твоему устройству.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+4
+</div>
+
+<h3>
+Заходи играть
+</h3>
+
+<p>
+Сохраняй сервер, подключайся
+и играй вместе с ELITKA VII.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ФИНАЛ -->
+
+<section class="final">
+
+<h2>
+🎉 Добро пожаловать на сервер!
+</h2>
+
+<p>
+Строй, исследуй, развивайся и играй вместе с участниками ELITKA VII.
+<br>
+Приятной игры! ⛏️🌲
+</p>
+
+</section>
+
+<footer>
+
+© 2026 ELITKA VII • Minecraft
+
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ELITKA VII — Прайм-статус</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#f5f7ff;
+
+    background:
+        radial-gradient(circle at 15% 10%,rgba(90,110,255,.22),transparent 30%),
+        radial-gradient(circle at 85% 15%,rgba(0,180,255,.14),transparent 30%),
+        radial-gradient(circle at 50% 90%,rgba(90,60,255,.15),transparent 35%),
+        linear-gradient(135deg,#050711 0%,#091020 45%,#050711 100%);
+
+    background-attachment:fixed;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+
+    background-size:45px 45px;
+
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.container{
+    width:min(1150px,94%);
+    margin:auto;
+    padding:20px 0 70px;
+}
+
+/* =========================
+   МЕНЮ
+========================= */
+
+.main-menu{
+    position:sticky;
+    top:12px;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px;
+    margin-bottom:35px;
+
+    background:rgba(8,12,27,.82);
+    border:1px solid rgba(130,145,190,.18);
+    border-radius:18px;
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.04);
+
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.main-menu::-webkit-scrollbar{
+    display:none;
+}
+
+.logo{
+    flex:0 0 auto;
+
+    padding:10px 15px;
+
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:1px;
+
+    text-decoration:none;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #a99cff,
+        #78c8ff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.menu-button{
+    flex:0 0 auto;
+
+    display:block;
+
+    padding:11px 14px;
+
+    border-radius:11px;
+
+    text-decoration:none;
+
+    color:#aeb7d0;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(130,145,190,.10);
+
+    font-size:13px;
+    font-weight:600;
+
+    white-space:nowrap;
+
+    transition:.2s ease;
+}
+
+.menu-button:hover{
+    color:#fff;
+
+    background:rgba(110,100,255,.14);
+
+    border-color:rgba(145,125,255,.4);
+
+    transform:translateY(-2px);
+}
+
+.menu-button.active{
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,100,255,.28),
+            rgba(70,150,255,.14)
+        );
+
+    border-color:rgba(145,125,255,.55);
+
+    box-shadow:
+        0 0 20px rgba(120,100,255,.12);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+
+    padding:55px 30px;
+
+    margin-bottom:22px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,28,75,.78),
+            rgba(8,13,30,.82)
+        );
+
+    border:1px solid rgba(150,125,255,.22);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.04);
+
+    backdrop-filter:blur(14px);
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    top:-300px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150,110,255,.24),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-icon{
+    font-size:52px;
+    margin-bottom:12px;
+}
+
+.hero-title{
+    margin:0;
+
+    font-size:clamp(42px,8vw,72px);
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #c2aaff,
+            #78c8ff
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-subtitle{
+    margin:12px 0 0;
+
+    color:#9aa5c5;
+
+    font-size:17px;
+}
+
+/* =========================
+   СЕКЦИИ
+========================= */
+
+.section{
+    position:relative;
+
+    margin:22px 0;
+
+    padding:28px;
+
+    background:rgba(15,20,38,.72);
+
+    border:1px solid rgba(130,145,190,.16);
+
+    border-radius:22px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.28),
+        inset 0 1px rgba(255,255,255,.03);
+
+    backdrop-filter:blur(14px);
+}
+
+.section::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:25px;
+    right:25px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(140,120,255,.5),
+            transparent
+        );
+}
+
+.section-title{
+    margin:0 0 18px;
+
+    font-size:25px;
+
+    color:#fff;
+}
+
+.section p{
+    color:#c4cbdd;
+
+    line-height:1.7;
+
+    margin:10px 0;
+}
+
+/* =========================
+   КАРТОЧКИ
+========================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+
+    margin-top:20px;
+}
+
+.info-card{
+    padding:22px;
+
+    background:rgba(7,10,22,.75);
+
+    border:1px solid rgba(130,145,190,.13);
+
+    border-radius:15px;
+
+    transition:.2s ease;
+}
+
+.info-card:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(140,120,255,.4);
+
+    background:rgba(25,29,55,.8);
+}
+
+.info-icon{
+    font-size:28px;
+
+    margin-bottom:12px;
+}
+
+.info-title{
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+    color:#fff;
+}
+
+.info-text{
+    color:#858faa;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+/* =========================
+   5 ЗОН
+========================= */
+
+.progress{
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:10px;
+
+    margin:25px 0 5px;
+}
+
+.progress-item{
+    padding:17px 10px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,100,255,.16),
+            rgba(70,150,255,.08)
+        );
+
+    border:1px solid rgba(145,125,255,.2);
+
+    border-radius:13px;
+}
+
+.progress-number{
+    display:block;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#bbaaff;
+
+    margin-bottom:5px;
+}
+
+.progress-text{
+    font-size:12px;
+
+    color:#929cb5;
+}
+
+/* =========================
+   ВАЖНО
+========================= */
+
+.important{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(45,30,75,.45),
+            rgba(15,20,38,.75)
+        );
+
+    border-color:rgba(150,120,255,.22);
+}
+
+.important strong{
+    color:#fff;
+}
+
+/* =========================
+   КНОПКА
+========================= */
+
+.zone-button{
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:13px 22px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,100,255,.38),
+            rgba(70,150,255,.22)
+        );
+
+    border:1px solid rgba(145,125,255,.45);
+
+    transition:.2s ease;
+}
+
+.zone-button:hover{
+    transform:translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(130,110,255,.52),
+            rgba(70,160,255,.30)
+        );
+
+    box-shadow:
+        0 8px 25px rgba(80,100,255,.15);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+
+    margin-top:40px;
+
+    padding-top:25px;
+
+    color:#68718d;
+
+    font-size:13px;
+
+    border-top:
+        1px solid
+        rgba(130,145,190,.08);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:750px){
+
+    .container{
+        width:94%;
+        padding-top:10px;
+    }
+
+    .main-menu{
+        top:7px;
+        margin-bottom:20px;
+        border-radius:15px;
+    }
+
+    .logo{
+        font-size:16px;
+        padding:9px 11px;
+    }
+
+    .menu-button{
+        padding:10px 12px;
+        font-size:12px;
+    }
+
+    .hero{
+        padding:42px 18px;
+        border-radius:20px;
+    }
+
+    .hero-title{
+        font-size:clamp(40px,12vw,65px);
+    }
+
+    .section{
+        padding:20px 17px;
+        border-radius:18px;
+    }
+
+    .section-title{
+        font-size:22px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .progress{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:430px){
+
+    .hero-icon{
+        font-size:42px;
+    }
+
+    .hero-title{
+        font-size:42px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- =========================
+     ГЛАВНОЕ МЕНЮ
+========================= -->
+
+<nav class="main-menu">
+
+<a class="logo" href="index.html">
+ELITKA
+</a>
+
+<a class="menu-button" href="index.html">
+🏠 Главная
+</a>
+
+<a class="menu-button" href="advertising.html">
+Реклама
+</a>
+
+<a class="menu-button" href="administration.html">
+Администрация
+</a>
+
+<a class="menu-button" href="support.html">
+Тех.Поддержка
+</a>
+
+<a class="menu-button" href="deputy-owner.html">
+Зам.Владелец
+</a>
+
+<a class="menu-button" href="owner.html">
+Владелец
+</a>
+
+<a class="menu-button" href="rules.html">
+Правила
+</a>
+
+<a class="menu-button" href="complaints.html">
+⚠️ Жалобы
+</a>
+
+<a class="menu-button" href="about.html">
+О проекте
+</a>
+
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="hero-icon">
+⭐
+</div>
+
+<h1 class="hero-title">
+Прайм-статус
+</h1>
+
+<p class="hero-subtitle">
+ELITKA VII • Система зон
+</p>
+
+</div>
+
+</header>
+
+<!-- =========================
+     ЧТО ТАКОЕ ПРАЙМ
+========================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+⭐ Что такое Прайм-статус?
+</h2>
+
+<p>
+Прайм-статус — это специальный статус участника
+в группе, который отображается в виде
+<strong>префикса</strong>.
+</p>
+
+<p>
+Получить его можно за выполнение специальных
+заданий — <strong>зон</strong>.
+</p>
+
+</section>
+
+<!-- =========================
+     ЧТО ТАКОЕ ЗОНЫ
+========================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+🛡️ Что такое зоны?
+</h2>
+
+<p>
+Зоны — это специальные объявленные мероприятия,
+которые проводятся в группе и действуют
+ограниченное время.
+</p>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<div class="info-icon">
+⏱️
+</div>
+
+<div class="info-title">
+Продолжительность
+</div>
+
+<div class="info-text">
+Каждая зона действует всего
+<strong>1 час</strong>.
+</div>
+
+</div>
+
+<div class="info-card">
+
+<div class="info-icon">
+📅
+</div>
+
+<div class="info-title">
+Интервал
+</div>
+
+<div class="info-text">
+Между одинаковыми зонами должен пройти
+интервал в <strong>1 день</strong>.
+</div>
+
+</div>
+
+<div class="info-card">
+
+<div class="info-icon">
+📌
+</div>
+
+<div class="info-title">
+Где проходят?
+</div>
+
+<div class="info-text">
+Зоны могут проходить как в
+<strong>текстовых</strong>, так и в
+<strong>голосовых чатах</strong>.
+</div>
+
+</div>
+
+</div>
+
+<p style="margin-top:20px;">
+Объявленная зона закрепляется в группе,
+чтобы участники могли увидеть условия
+и место её проведения.
+</p>
+
+</section>
+
+<!-- =========================
+     КАК ПОЛУЧИТЬ ПРАЙМ
+========================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+🏆 Как получить Прайм-статус?
+</h2>
+
+<p>
+Чтобы получить Прайм-статус, необходимо выполнить
+<strong>все 5 заданий</strong>.
+</p>
+
+<div class="progress">
+
+<div class="progress-item">
+<span class="progress-number">1</span>
+<span class="progress-text">Срача</span>
+</div>
+
+<div class="progress-item">
+<span class="progress-number">2</span>
+<span class="progress-text">Игры</span>
+</div>
+
+<div class="progress-item">
+<span class="progress-number">3</span>
+<span class="progress-text">Сна</span>
+</div>
+
+<div class="progress-item">
+<span class="progress-number">4</span>
+<span class="progress-text">Ботов</span>
+</div>
+
+<div class="progress-item">
+<span class="progress-number">5</span>
+<span class="progress-text">Миграции</span>
+</div>
+
+</div>
+
+<p style="margin-top:22px;">
+После выполнения всех пяти заданий участник
+получает <strong>Прайм-статус в группе</strong>.
+</p>
+
+</section>
+
+<!-- =========================
+     КТО ПРОВОДИТ ЗОНЫ
+========================= -->
+
+<section class="section">
+
+<h2 class="section-title">
+🛠️ Кто выбирает зоны?
+</h2>
+
+<p>
+Время и место проведения зон определяет
+<strong>Тех.Поддержка</strong>.
+</p>
+
+<p>
+Поэтому участникам необходимо следить
+за объявлениями и закреплёнными сообщениями
+в группе, чтобы не пропустить нужную зону.
+</p>
+
+</section>
+
+<!-- =========================
+     ПЯТЬ ЗОН
+========================= -->
+
+<section class="section important">
+
+<h2 class="section-title">
+📋 Все задания
+</h2>
+
+<p>
+Подробное описание каждой из пяти зон,
+условия выполнения и особенности участия
+собраны на отдельной странице.
+</p>
+
+<a
+class="zone-button"
+href="prime-zones.html"
+
+>
+
+🛡️ Посмотреть все зоны </a>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+© 2026 ELITKA VII • Prime Status
+
+</footer>
+
+</div>
+
+</body>
+</html>
